@@ -1,32 +1,34 @@
-from dagster import asset, AssetGroup
+from dagster import asset, AssetGroup,  DailyPartitionsDefinition
 from dagster_snowflake import snowflake_resource
 
 @asset(
-    required_resource_keys={'snowflake'}
+    required_resource_keys={'snowflake'},
+    partitions_def=DailyPartitionsDefinition(start_date="2022-04-01")
 )
 def delete_partition_from_snowflake(context):
     '''
     Delete partition = run date from snowflake.
     '''
     
-    date = '2022-04-18'
+    partition_key = context.output_asset_partitions_time_window()
     
     context.resources.snowflake.execute_query(f"""
         
         DELETE FROM RAW.RAW_NHL_GAME_DATA
-        where partition_date = date('{date}')
+        where partition_date = date('{partition_key}')
         """
     )
 
 @asset(
-    required_resource_keys={'snowflake'}
+    required_resource_keys={'snowflake'},
+    partitions_def=DailyPartitionsDefinition(start_date="2022-04-01")
 )
 def copy_partition_into_snowflake(context, delete_partition_from_snowflake):
     '''
     Copy partition into snowflake from s3
     '''
     
-    date = '2022-04-18'
+    partition_key = context.output_asset_partitions_time_window()
 
     context.resources.snowflake.execute_query(f"""
         
@@ -40,7 +42,7 @@ def copy_partition_into_snowflake(context, delete_partition_from_snowflake):
                 
         from @RAW.RAW_NHL_GAME_DATA
         )
-        pattern = '.*partition_date={date}.*.json'
+        pattern = '.*partition_date={partition_key}.*.json'
         force = TRUE;
         """
     )
