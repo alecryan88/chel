@@ -1,6 +1,0 @@
-[32m2022-04-20 21:08:01 -0400[0m - dagster - [34mDEBUG[0m - stage_game_data - b65321bf-8fdc-4997-bcad-8af3021faeb8 - 46675 - extract_game_ids_to_list - LOGS_CAPTURED - Started capturing logs for step: extract_game_ids_to_list.
-[32m2022-04-20 21:08:01 -0400[0m - dagster - [34mDEBUG[0m - stage_game_data - b65321bf-8fdc-4997-bcad-8af3021faeb8 - 46675 - extract_game_ids_to_list - STEP_START - Started execution of step "extract_game_ids_to_list".
-[32m2022-04-20 21:08:01 -0400[0m - dagster - [34mDEBUG[0m - stage_game_data - b65321bf-8fdc-4997-bcad-8af3021faeb8 - 46675 - extract_game_ids_to_list - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
-[32m2022-04-20 21:08:01 -0400[0m - dagster - [34mDEBUG[0m - stage_game_data - b65321bf-8fdc-4997-bcad-8af3021faeb8 - 46675 - extract_game_ids_to_list - ASSET_MATERIALIZATION - Materialized value extract_game_ids_to_list.
-[32m2022-04-20 21:08:01 -0400[0m - dagster - [34mDEBUG[0m - stage_game_data - b65321bf-8fdc-4997-bcad-8af3021faeb8 - 46675 - extract_game_ids_to_list - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
-[32m2022-04-20 21:08:01 -0400[0m - dagster - [34mDEBUG[0m - stage_game_data - b65321bf-8fdc-4997-bcad-8af3021faeb8 - 46675 - extract_game_ids_to_list - STEP_SUCCESS - Finished execution of step "extract_game_ids_to_list" in 564ms.
