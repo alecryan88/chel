@@ -1,9 +1,12 @@
 from dagster import asset, AssetGroup,  DailyPartitionsDefinition
 from dagster_snowflake import snowflake_resource
 
+daily_partitions_def = DailyPartitionsDefinition(start_date="2020-01-01")
+
 @asset(
     required_resource_keys={'snowflake'},
-    partitions_def=DailyPartitionsDefinition(start_date="2022-04-01")
+    partitions_def=daily_partitions_def,
+    compute_kind='SQL'
 )
 def delete_partition_from_snowflake(context):
     '''
@@ -21,7 +24,8 @@ def delete_partition_from_snowflake(context):
 
 @asset(
     required_resource_keys={'snowflake'},
-    partitions_def=DailyPartitionsDefinition(start_date="2022-04-01")
+    partitions_def=daily_partitions_def,
+    compute_kind='SQL'
 )
 def copy_partition_into_snowflake(context, delete_partition_from_snowflake):
     '''

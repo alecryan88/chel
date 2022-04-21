@@ -2,8 +2,11 @@ from dagster import asset, DailyPartitionsDefinition
 import requests
 import io
 
+daily_partitions_def = DailyPartitionsDefinition(start_date="2020-01-01")
+
 @asset(
-    partitions_def=DailyPartitionsDefinition(start_date="2022-04-01")
+    partitions_def=daily_partitions_def,
+    compute_kind='python'
 )
 def extract_game_ids_to_list(context):
     '''
@@ -31,7 +34,8 @@ def extract_game_ids_to_list(context):
    
 @asset(
     required_resource_keys={'s3'},
-    partitions_def=DailyPartitionsDefinition(start_date="2022-04-01")
+    partitions_def=daily_partitions_def,
+    compute_kind='python'
 )
 def load_game_data_to_s3(context, extract_game_ids_to_list):
     '''

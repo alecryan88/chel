@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: NHL_DB_RAW
+    database: NHL_DB
+    schema: RAW
+    tables:
+      - name: RAW_NHL_GAME_DATA

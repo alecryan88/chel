@@ -1,4 +1,4 @@
-from dagster import AssetGroup, schedule_from_partitions
+from dagster import AssetGroup
 from dagster_aws.s3.resources import s3_resource
 from nhl_elt.assets.nhl_to_s3 import *
 

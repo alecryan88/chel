@@ -1,0 +1,7 @@
+dagster
+dagit
+dagster-aws
+dagster-dbt
+dagster-snowflake
+requests
+pandas
