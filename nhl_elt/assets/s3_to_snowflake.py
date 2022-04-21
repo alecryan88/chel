@@ -13,7 +13,7 @@ def delete_partition_from_snowflake(context):
     Delete partition = run date from snowflake.
     '''
     
-    partition_key = context.output_asset_partitions_time_window()
+    partition_key = context.output_asset_partition_key()
     
     context.resources.snowflake.execute_query(f"""
         
@@ -32,7 +32,7 @@ def copy_partition_into_snowflake(context, delete_partition_from_snowflake):
     Copy partition into snowflake from s3
     '''
     
-    partition_key = context.output_asset_partitions_time_window()
+    partition_key = context.output_asset_partition_key()
 
     context.resources.snowflake.execute_query(f"""
         

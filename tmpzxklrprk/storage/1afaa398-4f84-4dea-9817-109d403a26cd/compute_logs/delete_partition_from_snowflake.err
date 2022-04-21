@@ -1,0 +1,11 @@
+[32m2022-04-20 21:10:07 -0400[0m - dagster - [34mDEBUG[0m - load_data_to_snowflake - 1afaa398-4f84-4dea-9817-109d403a26cd - 46838 - delete_partition_from_snowflake - LOGS_CAPTURED - Started capturing logs for step: delete_partition_from_snowflake.
+[32m2022-04-20 21:10:07 -0400[0m - dagster - [34mDEBUG[0m - load_data_to_snowflake - 1afaa398-4f84-4dea-9817-109d403a26cd - 46838 - delete_partition_from_snowflake - STEP_START - Started execution of step "delete_partition_from_snowflake".
+[32m2022-04-20 21:10:08 -0400[0m - dagster - [34mINFO[0m - resource:snowflake - 1afaa398-4f84-4dea-9817-109d403a26cd - delete_partition_from_snowflake - Executing query: 
+        
+        DELETE FROM RAW.RAW_NHL_GAME_DATA
+        where partition_date = date('2022-04-19')
+        
+[32m2022-04-20 21:10:10 -0400[0m - dagster - [34mDEBUG[0m - load_data_to_snowflake - 1afaa398-4f84-4dea-9817-109d403a26cd - 46838 - delete_partition_from_snowflake - STEP_OUTPUT - Yielded output "result" of type "Any". (Type check passed).
+[32m2022-04-20 21:10:10 -0400[0m - dagster - [34mDEBUG[0m - load_data_to_snowflake - 1afaa398-4f84-4dea-9817-109d403a26cd - 46838 - delete_partition_from_snowflake - ASSET_MATERIALIZATION - Materialized value delete_partition_from_snowflake.
+[32m2022-04-20 21:10:10 -0400[0m - dagster - [34mDEBUG[0m - load_data_to_snowflake - 1afaa398-4f84-4dea-9817-109d403a26cd - 46838 - delete_partition_from_snowflake - HANDLED_OUTPUT - Handled output "result" using IO manager "io_manager"
+[32m2022-04-20 21:10:10 -0400[0m - dagster - [34mDEBUG[0m - load_data_to_snowflake - 1afaa398-4f84-4dea-9817-109d403a26cd - 46838 - delete_partition_from_snowflake - STEP_SUCCESS - Finished execution of step "delete_partition_from_snowflake" in 3.01s.

@@ -42,7 +42,7 @@ def load_game_data_to_s3(context, extract_game_ids_to_list):
     Load game_data to s3 in JSON format.
     '''
 
-    partition_key = context.output_asset_partitions_time_window()
+    partition_key = context.output_asset_partition_key()
     
 
     for game_id in extract_game_ids_to_list:

@@ -1,0 +1,119 @@
+[32m2022-04-20 21:22:45 -0400[0m - dagster - [34mDEBUG[0m - dbt_transforms - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - 47273 - run_dbt_dbt_nhl_analytics - LOGS_CAPTURED - Started capturing logs for step: run_dbt_dbt_nhl_analytics.
+[32m2022-04-20 21:22:45 -0400[0m - dagster - [34mDEBUG[0m - dbt_transforms - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - 47273 - run_dbt_dbt_nhl_analytics - STEP_START - Started execution of step "run_dbt_dbt_nhl_analytics".
+[32m2022-04-20 21:22:45 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - Executing command: dbt --log-format json run --project-dir dbt --profiles-dir dbt --select *
+[32m2022-04-20 21:22:49 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - Running with dbt=1.0.0
+[32m2022-04-20 21:22:49 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - Found 13 models, 0 tests, 0 snapshots, 0 analyses, 381 macros, 0 operations, 0 seed files, 1 source, 0 exposures, 0 metrics
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - Concurrency: 200 threads (target='dev')
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 1 of 13 START incremental model DBT_ARYAN.stg_game_conferences.................. [RUN]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 2 of 13 START incremental model DBT_ARYAN.stg_game_divisions.................... [RUN]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 3 of 13 START incremental model DBT_ARYAN.stg_game_events....................... [RUN]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 4 of 13 START incremental model DBT_ARYAN.stg_game_events_players............... [RUN]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 5 of 13 START incremental model DBT_ARYAN.stg_game_metadata..................... [RUN]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 6 of 13 START incremental model DBT_ARYAN.stg_game_officials.................... [RUN]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 7 of 13 START incremental model DBT_ARYAN.stg_game_roster....................... [RUN]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 8 of 13 START incremental model DBT_ARYAN.stg_game_teams........................ [RUN]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 9 of 13 START incremental model DBT_ARYAN.stg_game_venues....................... [RUN]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 10 of 13 START incremental model DBT_ARYAN.stg_player_demographics.............. [RUN]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 2 of 13 ERROR creating incremental model DBT_ARYAN.stg_game_divisions........... [[31mERROR[0m in 0.19s][0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 1 of 13 ERROR creating incremental model DBT_ARYAN.stg_game_conferences......... [[31mERROR[0m in 0.20s][0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 5 of 13 ERROR creating incremental model DBT_ARYAN.stg_game_metadata............ [[31mERROR[0m in 0.19s][0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 3 of 13 ERROR creating incremental model DBT_ARYAN.stg_game_events.............. [[31mERROR[0m in 0.20s][0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 4 of 13 ERROR creating incremental model DBT_ARYAN.stg_game_events_players...... [[31mERROR[0m in 0.20s][0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 6 of 13 ERROR creating incremental model DBT_ARYAN.stg_game_officials........... [[31mERROR[0m in 0.19s][0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 7 of 13 ERROR creating incremental model DBT_ARYAN.stg_game_roster.............. [[31mERROR[0m in 0.19s][0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 8 of 13 ERROR creating incremental model DBT_ARYAN.stg_game_teams............... [[31mERROR[0m in 0.19s][0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 9 of 13 ERROR creating incremental model DBT_ARYAN.stg_game_venues.............. [[31mERROR[0m in 0.19s][0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 10 of 13 ERROR creating incremental model DBT_ARYAN.stg_player_demographics..... [[31mERROR[0m in 0.20s][0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 11 of 13 SKIP relation DBT_ARYAN.stg_game_player_stats.......................... [[33mSKIP[0m]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 12 of 13 SKIP relation DBT_ARYAN.m_game_player_stats............................ [[33mSKIP[0m]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - 13 of 13 SKIP relation DBT_ARYAN.m_game_finals.................................. [[33mSKIP[0m]
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - Finished running 13 incremental models in 3.67s.
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - [31mCompleted with 10 errors and 0 warnings:[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - [33mCompilation Error in model stg_game_divisions (models/staging/stg_game_divisions.sql)[0m[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Required var 'run_date' not found in config:[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Vars supplied to stg_game_divisions = {}[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   [0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > in model stg_game_divisions (models/staging/stg_game_divisions.sql)[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > called by model stg_game_divisions (models/staging/stg_game_divisions.sql)[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - [33mCompilation Error in model stg_game_conferences (models/staging/stg_game_conferences.sql)[0m[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Required var 'run_date' not found in config:[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Vars supplied to stg_game_conferences = {}[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   [0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > in model stg_game_conferences (models/staging/stg_game_conferences.sql)[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > called by model stg_game_conferences (models/staging/stg_game_conferences.sql)[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - [33mCompilation Error in model stg_game_metadata (models/staging/stg_game_metadata.sql)[0m[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Required var 'run_date' not found in config:[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Vars supplied to stg_game_metadata = {}[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   [0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > in model stg_game_metadata (models/staging/stg_game_metadata.sql)[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > called by model stg_game_metadata (models/staging/stg_game_metadata.sql)[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - [33mCompilation Error in model stg_game_events (models/staging/stg_game_events.sql)[0m[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Required var 'run_date' not found in config:[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Vars supplied to stg_game_events = {}[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   [0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > in model stg_game_events (models/staging/stg_game_events.sql)[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > called by model stg_game_events (models/staging/stg_game_events.sql)[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - [33mCompilation Error in model stg_game_events_players (models/staging/stg_game_events_players.sql)[0m[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Required var 'run_date' not found in config:[0m
+[32m2022-04-20 21:22:52 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Vars supplied to stg_game_events_players = {}[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   [0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > in model stg_game_events_players (models/staging/stg_game_events_players.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > called by model stg_game_events_players (models/staging/stg_game_events_players.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - [33mCompilation Error in model stg_game_officials (models/staging/stg_game_officials.sql)[0m[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Required var 'run_date' not found in config:[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Vars supplied to stg_game_officials = {}[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   [0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > in model stg_game_officials (models/staging/stg_game_officials.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > called by model stg_game_officials (models/staging/stg_game_officials.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - [33mCompilation Error in model stg_game_roster (models/staging/stg_game_roster.sql)[0m[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Required var 'run_date' not found in config:[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Vars supplied to stg_game_roster = {}[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   [0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > in model stg_game_roster (models/staging/stg_game_roster.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > called by model stg_game_roster (models/staging/stg_game_roster.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - [33mCompilation Error in model stg_game_teams (models/staging/stg_game_teams.sql)[0m[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Required var 'run_date' not found in config:[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Vars supplied to stg_game_teams = {}[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   [0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > in model stg_game_teams (models/staging/stg_game_teams.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > called by model stg_game_teams (models/staging/stg_game_teams.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - [33mCompilation Error in model stg_game_venues (models/staging/stg_game_venues.sql)[0m[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Required var 'run_date' not found in config:[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Vars supplied to stg_game_venues = {}[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   [0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > in model stg_game_venues (models/staging/stg_game_venues.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > called by model stg_game_venues (models/staging/stg_game_venues.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - [33mCompilation Error in model stg_player_demographics (models/staging/stg_player_demographics.sql)[0m[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Required var 'run_date' not found in config:[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   Vars supplied to stg_player_demographics = {}[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   [0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > in model stg_player_demographics (models/staging/stg_player_demographics.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mresource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics -   > called by model stg_player_demographics (models/staging/stg_player_demographics.sql)[0m
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - Done. PASS=0 WARN=0 ERROR=10 SKIP=3 TOTAL=13
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mINFO[0m - resource:dbt - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - run_dbt_dbt_nhl_analytics - dbt exited with return code 1
+[32m2022-04-20 21:22:53 -0400[0m - dagster - [34mERROR[0m - [31mdbt_transforms - 312e6768-f2af-4a13-a350-a4d0e8dce5e8 - 47273 - run_dbt_dbt_nhl_analytics - STEP_FAILURE - Execution of step "run_dbt_dbt_nhl_analytics" failed.
+
+dagster_dbt.errors.DagsterDbtCliHandledRuntimeError: Handled error in the dbt CLI (return code 1)
+
+Stack Trace:
+  File "/Users/alecryan/Desktop/nhl-analytics-pipleine-dagster/venv/lib/python3.7/site-packages/dagster/core/execution/plan/execute_plan.py", line 232, in dagster_event_sequence_for_step
+    for step_event in check.generator(step_events):
+  File "/Users/alecryan/Desktop/nhl-analytics-pipleine-dagster/venv/lib/python3.7/site-packages/dagster/core/execution/plan/execute_step.py", line 343, in core_dagster_event_sequence_for_step
+    _step_output_error_checked_user_event_sequence(step_context, user_event_sequence)
+  File "/Users/alecryan/Desktop/nhl-analytics-pipleine-dagster/venv/lib/python3.7/site-packages/dagster/core/execution/plan/execute_step.py", line 69, in _step_output_error_checked_user_event_sequence
+    for user_event in user_event_sequence:
+  File "/Users/alecryan/Desktop/nhl-analytics-pipleine-dagster/venv/lib/python3.7/site-packages/dagster/core/execution/plan/compute.py", line 170, in execute_core_compute
+    for step_output in _yield_compute_results(step_context, inputs, compute_fn):
+  File "/Users/alecryan/Desktop/nhl-analytics-pipleine-dagster/venv/lib/python3.7/site-packages/dagster/core/execution/plan/compute.py", line 147, in _yield_compute_results
+    user_event_generator,
+  File "/Users/alecryan/Desktop/nhl-analytics-pipleine-dagster/venv/lib/python3.7/site-packages/dagster/utils/__init__.py", line 401, in iterate_with_context
+    next_output = next(iterator)
+  File "/Users/alecryan/Desktop/nhl-analytics-pipleine-dagster/venv/lib/python3.7/site-packages/dagster_dbt/asset_defs.py", line 121, in _dbt_project_multi_assset
+    dbt_output = context.resources.dbt.run(select=select)
+  File "/Users/alecryan/Desktop/nhl-analytics-pipleine-dagster/venv/lib/python3.7/site-packages/dagster_dbt/cli/resources.py", line 121, in run
+    return self.cli("run", models=models, exclude=exclude, **kwargs)
+  File "/Users/alecryan/Desktop/nhl-analytics-pipleine-dagster/venv/lib/python3.7/site-packages/dagster_dbt/cli/resources.py", line 88, in cli
+    target_path=self._target_path,
+  File "/Users/alecryan/Desktop/nhl-analytics-pipleine-dagster/venv/lib/python3.7/site-packages/dagster_dbt/cli/utils.py", line 93, in execute_cli
+    raise DagsterDbtCliHandledRuntimeError(logs=logs, raw_output=raw_output)
+[0m

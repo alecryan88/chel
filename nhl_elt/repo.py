@@ -2,6 +2,7 @@ from dagster import repository, build_schedule_from_partitioned_job
 from nhl_elt.jobs.stage_data_in_s3 import * 
 from nhl_elt.jobs.load_data_to_snowflake import * 
 from nhl_elt.jobs.dbt_transforms import *
+#from nhl_elt.sensors.s3_sensor import *
 
 @repository
 def nhl_elt_prod():
