@@ -10,7 +10,7 @@ daily_partitions_def = DailyPartitionsDefinition(start_date="2020-01-01")
 )
 def extract_game_ids_to_list(context):
     '''
-    Extracts the game_ids on the execution_date and returns them in a game_id_list.
+    Extzracts the game_ids on the execution_date and returns them in a game_id_list.
     '''
 
     partition_key = context.output_asset_partition_key()

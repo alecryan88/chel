@@ -1,17 +1,7 @@
-from dagster import AssetGroup
+from dagster import AssetGroup, make_values_resource
 from dagster_snowflake import snowflake_resource
 from nhl_elt.assets.s3_to_snowflake import *
 import json
-
-snowflake_resource_configured = snowflake_resource.configured(
-    {
-        'account': 'pua88554',
-        'user':'flyers88', 
-        'password':'VampireWeekend2021',
-        'database': 'NHL_DB',
-        'warehouse': 'NHL_ANALYTICS'
-    }
-)
 
 assets = [
     delete_partition_from_snowflake, 
@@ -20,8 +10,9 @@ assets = [
 
 asset_group = AssetGroup(assets, 
     resource_defs={
-        'snowflake': snowflake_resource_configured,
-    }
+        'snowflake': snowflake_resource,
+        'run_parameters': make_values_resource()
+        }
 )
 
 load_data_to_snowflake = asset_group.build_job(name="load_data_to_snowflake")
