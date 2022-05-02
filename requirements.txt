@@ -3,5 +3,6 @@ dagit
 dagster-aws
 dagster-dbt
 dagster-snowflake
+dagster-postgres
 requests
 pandas

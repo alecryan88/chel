@@ -4,3 +4,4 @@ venv
 history/
 storage/
 schedules/
+.logs_queue
