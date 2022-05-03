@@ -1,8 +1,8 @@
 FROM python:3.7-slim
 
 RUN mkdir -p /opt/dagster/dagster_home /opt/dagster/app
-RUN mkdir -p /opt/dagster/app/nhl_elt
-RUN mkdir -p /opt/dagster/app/dbt
+RUN mkdir /opt/dagster/app/nhl_elt
+RUN mkdir /opt/dagster/app/dbt
 
 RUN pip install dagster dagit dagster-postgres dagster-dbt dagster-aws dagster-snowflake pandas requests
 
