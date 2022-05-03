@@ -1,6 +1,6 @@
 from dagster import AssetGroup, make_values_resource
 from dagster_snowflake import snowflake_resource
-from nhl_elt.assets.s3_to_snowflake import *
+from nhl_dagster.assets.s3_to_snowflake import *
 import json
 
 assets = [
