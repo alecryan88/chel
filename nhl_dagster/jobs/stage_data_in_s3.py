@@ -1,11 +1,7 @@
 from dagster import AssetGroup
 from dagster_aws.s3.resources import s3_resource
 from nhl_dagster.assets.nhl_to_s3 import *
-
-
-s3_resource_configured = s3_resource.configured(
-    {'profile_name':'dagster_dev'}
-)
+import os
 
 assets = [
     extract_game_ids_to_list, 
@@ -14,7 +10,7 @@ assets = [
 
 asset_group = AssetGroup(assets, 
     resource_defs={
-        's3': s3_resource_configured,
+        's3': s3_resource
     }
 )
 
