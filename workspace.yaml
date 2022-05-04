@@ -1,2 +1,2 @@
 load_from:
-  - python_file: nhl_elt/repo.py
+  - python_file: nhl_dagster/repo.py
