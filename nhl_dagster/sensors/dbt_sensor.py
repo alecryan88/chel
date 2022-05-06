@@ -24,8 +24,8 @@ def create_dbt_asset_sensor(key, dbt_run):
                 "resources": {
                     "dbt": {
                         "config": {
-                            "profiles_dir" : "dbt",
-                            "project_dir" : "dbt",
+                            "profiles_dir" : "nhl_dbt",
+                            "project_dir" : "nhl_dbt",
                             "var" : { 'run_date' : run_date}
                         }
                     }
