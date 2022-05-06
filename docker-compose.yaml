@@ -1,35 +1,37 @@
 version: "3.7"
 
 services:
-
-  docker_user_code:
+  docker_example_user_code:
     build:
       context: .
       dockerfile: ./Dockerfile_user_code
-    container_name: docker_user_code
-    image: docker_user_code_image
+    container_name: docker_example_user_code
+    image: docker_example_user_code_image
     restart: always
     environment:
       DAGSTER_POSTGRES_USER: "postgres"
       DAGSTER_POSTGRES_PASSWORD: "postgres"
       DAGSTER_POSTGRES_DB: "dagster_nhl_db"
-      DAGSTER_CURRENT_IMAGE: docker_user_code_image
+      DAGSTER_CURRENT_IMAGE: "docker_example_user_code_image"
     networks:
-      - docker_network
+      - docker_example_network
 
-  dagit:
+  # This service runs dagit, which loads your user code from the user code container.
+  # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagit will be put on
+  # a queue and later dequeued and launched by dagster-daemon.
+  docker_example_dagit:
     build:
-      context: . 
+      context: .
       dockerfile: ./Dockerfile_dagster
     entrypoint:
       - dagit
-      - -h 
+      - -h
       - "0.0.0.0"
-      - -p 
+      - -p
       - "3000"
-      - -w 
+      - -w
       - workspace.yaml
-    container_name: docker_dagit
+    container_name: docker_example_dagit
     expose:
       - "3000"
     ports:
@@ -41,18 +43,20 @@ services:
     volumes: # Make docker client accessible so we can terminate containers from dagit
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - docker_network
+      - docker_example_network
     depends_on:
-      - docker_user_code
+      - docker_example_user_code
 
-  docker_daemon:
+  # This service runs the dagster-daemon process, which is responsible for taking runs
+  # off of the queue and launching them, as well as creating runs from schedules or sensors.
+  docker_example_daemon:
     build:
       context: .
       dockerfile: ./Dockerfile_dagster
     entrypoint:
       - dagster-daemon
       - run
-    container_name: docker_daemon
+    container_name: docker_example_daemon
     restart: on-failure
     environment:
       DAGSTER_POSTGRES_USER: "postgres"
@@ -61,11 +65,11 @@ services:
     volumes: # Make docker client accessible so we can launch containers using host docker
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - docker_network
+      - docker_example_network
     depends_on:
-      - docker_user_code
+      - docker_example_user_code
 
 networks:
-  docker_network:
+  docker_example_network:
     driver: bridge
-    name: docker_network
+    name: docker_example_network
