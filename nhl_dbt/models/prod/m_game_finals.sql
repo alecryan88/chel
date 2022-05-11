@@ -38,14 +38,15 @@ Select
         sum(coalesce(shootout_goals_against,0)) as shootout_goals_against,
         sum(coalesce(shootout_saves,0)) as shootout_saves,
         sum(coalesce(shootout_shots_faced,0)) as shootout_shots_faced,
-        case when sum(coalesce(goals_scored,0)) > sum(coalesce(goals_against,0)) then 1 else 0 end reg_w,
-        case when sum(coalesce(goals_scored,0)) < sum(coalesce(goals_against,0)) then 1 else 0 end reg_l,
-        case when sum(coalesce(shootout_goals,0)) > sum(coalesce(shootout_goals_against,0)) then 1 else 0 end sow,
-        case when sum(coalesce(shootout_goals,0)) < sum(coalesce(shootout_goals_against,0)) then 1 else 0 end sol,
-        case when sum(coalesce(overtime_goals_scored,0)) > sum(coalesce(overtime_goals_against,0)) then 1 else 0 end otw,
-        case when sum(coalesce(overtime_goals_scored,0)) < sum(coalesce(overtime_goals_against,0)) then 1 else 0 end otl,
-        reg_w + sow + otw as win,
-        reg_l + sol + otl as loss
+        case when sum(coalesce(goals_scored,0)) > sum(coalesce(goals_against,0)) then 1 else 0 end regulation_win,
+        case when sum(coalesce(goals_scored,0)) < sum(coalesce(goals_against,0)) then 1 else 0 end regulation_loss,
+        case when sum(coalesce(shootout_goals,0)) > sum(coalesce(shootout_goals_against,0)) then 1 else 0 end shootout_win,
+        case when sum(coalesce(shootout_goals,0)) < sum(coalesce(shootout_goals_against,0)) then 1 else 0 end shootout_loss,
+        case when sum(coalesce(overtime_goals_scored,0)) > sum(coalesce(overtime_goals_against,0)) then 1 else 0 end overtime_win,
+        case when sum(coalesce(overtime_goals_scored,0)) < sum(coalesce(overtime_goals_against,0)) then 1 else 0 end overtime_loss,
+        regulation_win + shootout_win + overtime_win as win,
+        regulation_loss as loss,
+        shootout_loss + overtime_loss as otl
           
 from {{ref( 'm_game_player_stats' )}}
 
