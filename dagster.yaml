@@ -14,7 +14,13 @@ run_launcher:
       - DAGSTER_POSTGRES_USER
       - DAGSTER_POSTGRES_PASSWORD
       - DAGSTER_POSTGRES_DB
+
+    container_kwargs:
+      volumes:
+        - /Users/alecryan/Desktop/nhl-analytics-pipleine/nhl_dagster:/opt/dagster/app/nhl_dagster
+        - /Users/alecryan/Desktop/nhl-analytics-pipleine/nhl_dbt:/opt/dagster/app/nhl_dbt
     network: docker_example_network
+    
     
 run_storage:
   module: dagster_postgres.run_storage

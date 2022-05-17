@@ -13,6 +13,9 @@ services:
       DAGSTER_POSTGRES_PASSWORD: "postgres"
       DAGSTER_POSTGRES_DB: "dagster_nhl_db"
       DAGSTER_CURRENT_IMAGE: "docker_example_user_code_image"
+    volumes:
+      - /Users/alecryan/Desktop/nhl-analytics-pipleine/nhl_dagster:/opt/dagster/app/nhl_dagster/ 
+      - /Users/alecryan/Desktop/nhl-analytics-pipleine/nhl_dbt:/opt/dagster/app/nhl_dbt/ 
     networks:
       - docker_example_network
 
@@ -88,6 +91,3 @@ networks:
   docker_example_network:
     driver: bridge
     name: docker_example_network
-
-#Using volumes in dev to mount user code
-volumes:

@@ -31,6 +31,14 @@ def extract_game_ids_to_list(context):
 
     return game_id_list
 
+@asset(
+    compute_kind='python',
+    partitions_def=daily_partitions_def
+)
+def some_test(context, extract_game_ids_to_list):
+    
+    print(extract_game_ids_to_list)
+
    
 @asset(
     required_resource_keys={'s3'},
