@@ -5,7 +5,8 @@ import os
 
 assets = [
     extract_game_ids_to_list, 
-    load_game_data_to_s3
+    load_game_data_to_s3,
+    some_test
     ]
 
 asset_group = AssetGroup(assets, 
