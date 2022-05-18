@@ -1,0 +1,235 @@
+version: 2
+
+models:
+  
+  
+  - name: stg_game_conferences
+    description: 'test' 
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+        tests:
+          - not_null
+      - name: conference_id
+        description: '{{ doc("conference_id") }}'
+        tests:
+          - not_null
+      - name: conference_name
+        description: '{{ doc("conference_name") }}'
+        tests:
+          - not_null
+      - name: division_id
+        description: '{{ doc("division_id") }}'
+        tests:
+          - not_null
+
+  
+  - name: stg_game_events
+    description: 'test' 
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: play_id
+        description: '{{ doc("play_id") }}'
+        tests:
+          - not_null
+          - unique
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+       
+      - name: event_timestamp
+        description: '{{ doc("event_timestamp") }}'
+        
+      - name: event_id
+        description: '{{ doc("event_id") }}'
+        
+      - name: event_team_id
+        description: '{{ doc("event_team_id") }}'
+
+      - name: x_coor
+        description: '{{ doc("x_coor") }}'
+
+      - name: y_coor
+        description: '{{ doc("y_coor") }}'
+
+      - name: description
+        description: '{{ doc("description") }}'
+
+      - name: event
+        description: '{{ doc("event") }}'
+
+      - name: event_code
+        description: '{{ doc("event_code") }}'
+
+      - name: event_type_id
+        description: '{{ doc("event_type_id") }}'
+
+      - name: period
+        description: '{{ doc("period") }}'
+
+      - name: period_type
+        description: '{{ doc("period_type") }}'
+
+      - name: period_s
+        description: '{{ doc("period_s") }}'
+  
+  
+  - name: stg_game_events_players
+    description: 'test' 
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: play_id
+        description: '{{ doc("play_id") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+        
+      - name: game_season
+        description: '{{ doc("game_season") }}'
+
+      - name: event_id
+        description: '{{ doc("event_id") }}'
+        tests:
+          - not_null
+
+      - name: player_id
+        description: '{{ doc("player_id") }}'
+        
+      - name: player_type
+        description: '{{ doc("player_type") }}'
+
+  
+  - name: stg_game_metadata
+    description: 'test' 
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+        
+      - name: game_season
+        description: '{{ doc("game_season") }}'
+
+      - name: game_type
+        description: '{{ doc("game_type") }}'
+
+      - name: away_team_id
+        description: '{{ doc("away_team_id") }}'
+      
+      - name: home_team_id
+        description: '{{ doc("home_team_id") }}'
+
+      - name: game_start
+        description: '{{ doc("game_start") }}'
+
+      - name: game_end
+        description: '{{ doc("game_end") }}'
+      
+      - name: game_state
+        description: '{{ doc("game_state") }}'
+        
+  - name: stg_game_events_players
+    description: 'test' 
+    columns:
+      - name: partition_date
+        description: '{{ doc("partition_date") }}'
+        tests:
+          - not_null
+
+      - name: game_id
+        description: '{{ doc("game_id") }}'
+        
+      - name: event_timestamp 
+        description: '{{ doc("event_timestamp") }}'
+
+      - name: period_type
+        description: '{{ doc("period_type") }}'
+
+      - name: period
+        description: '{{ doc("period") }}'
+      
+      - name: event_id
+        description: '{{ doc("event_id") }}'
+
+      - name: player_id
+        description: '{{ doc("player_id") }}'
+
+      - name: goals_scored
+        description: '{{ doc("goals_scored") }}'
+      
+      - name: overtime_goals_scored
+        description: '{{ doc("overtime_goals_scored") }}'
+
+      - name: assists
+        description: '{{ doc("assists") }}'
+      
+      - name: goals_against
+        description: '{{ doc("goals_against") }}'
+
+      - name: overtime_goals_against
+        description: '{{ doc("overtime_goals_against") }}'
+      
+      - name: shots_on_goal
+        description: '{{ doc("shots_on_goal") }}'
+      
+      - name: shots_missed
+        description: '{{ doc("shots_missed") }}'
+      
+      - name: saves
+        description: '{{ doc("saves") }}'
+
+      - name: hits
+        description: '{{ doc("hits") }}'
+      
+      - name: received_hits
+        description: '{{ doc("received_hits") }}'
+        
+      - name: had_shots_blocked
+        description: '{{ doc("had_shots_blocked") }}'
+      
+      - name: blocked_shots
+        description: '{{ doc("blocked_shots") }}'
+
+      - name: faceoffs_won
+        description: '{{ doc("faceoffs_won") }}'
+      
+      - name: faceoffs_lost
+        description: '{{ doc("faceoffs_lost") }}'
+
+      - name: takeaways
+        description: '{{ doc("takeaways") }}'
+      
+      - name: giveaways
+        description: '{{ doc("giveaways") }}'
+
+      - name: shootout_goals
+        description: '{{ doc("shootout_goals_scored") }}'
+
+      - name: shootout_shots
+        description: '{{ doc("shootout_attempts") }}'
+      
+      - name: shootout_goals_against
+        description: '{{ doc("shootout_goals_against") }}'
+
+      - name: shootout_saves
+        description: '{{ doc("shootout_saves") }}'
+      
+      - name: shootout_shots_faced
+        description: '{{ doc("shootout_shots_faced") }}'
