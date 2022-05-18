@@ -14,12 +14,7 @@ Select
     JSON_EXTRACT:gameData:teams:home.id as home_team_id,
     JSON_EXTRACT:gameData:datetime:dateTime::timestamp as game_start,
     JSON_EXTRACT:gameData:datetime:endDateTime::timestamp as game_end,
-    JSON_EXTRACT:gameData:status:abstractGameState::string as game_state,
-    JSON_EXTRACT:gameData:status:codedGameState::string as coded_game_state,
-    JSON_EXTRACT:gameData:status:startTimeTBD::string as start_time_tbd,
-    JSON_EXTRACT:gameData:status:detailedState::string as detailed_state,
-    JSON_EXTRACT:gameData:status:statusCode::string as status_code
-    
+    JSON_EXTRACT:gameData:status:abstractGameState::string as game_state
 
 from {{source('NHL_DB_RAW', 'RAW_NHL_GAME_DATA')}}
 

@@ -23,11 +23,16 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
+vars:
+  #Placeholder for docs generate. Need to pass a run_date to model config
+  run_date: '2022-01-01'
+
 models:
   dbt_nhl_analytics:
     +on_schema_change: "sync_all_columns"
-    
     prod:
+      +schema: prod
       +materialized: incremental
     staging:
+      +schema: staging
       +materialized: incremental
