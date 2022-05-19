@@ -18,9 +18,8 @@ Select
     players.value:jerseyNumber::varchar as jersey_number,
     players.value:person:fullName::varchar as full_name,
     players.value:person:rosterStatus::varchar as roster_status,
-    players.value:person:shootsCatches::varchar as shoots_catches,
+    players.value:person:shootsCatches::varchar as handedness,
     players.value:position:abbreviation::varchar as pos_abv,
-    players.value:position:code::varchar as pos_code,
     players.value:position:name::varchar as pos_name,
     players.value:position:type::varchar as pos_type
 
@@ -46,9 +45,8 @@ Select
     players.value:jerseyNumber::varchar as jersey_number,
     players.value:person:fullName::varchar as full_name,
     players.value:person:rosterStatus::varchar as roster_status,
-    players.value:person:shootsCatches::varchar as shoots_catches,
+    players.value:person:shootsCatches::varchar as handedness,
     players.value:position:abbreviation::varchar as pos_abv,
-    players.value:position:code::varchar as pos_code,
     players.value:position:name::varchar as pos_name,
     players.value:position:type::varchar as pos_type
 

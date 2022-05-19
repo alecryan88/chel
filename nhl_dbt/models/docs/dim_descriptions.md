@@ -18,6 +18,10 @@ The name of the conference.
 Unique identifier for each division.
 {% enddocs %}
 
+{% docs division_name %}
+The name of the division.
+{% enddocs %}
+
 {% docs team_id %}
 Unique identifier for each team.
 {% enddocs %}
@@ -124,4 +128,104 @@ The officials last name.
 
 {% docs official_type %}
 Distinguishes a linesmnan from a referee.
+{% enddocs %}
+
+{% docs home_away_status %}
+Text column describing Home/Away orientation.
+{% enddocs %}
+
+{% docs active_status %}
+Text column describing whether a player is active or scratched.
+{% enddocs %}
+
+{% docs jersey_number %}
+The players jersey number.
+{% enddocs %}
+
+{% docs full_name %}
+The players full name.
+{% enddocs %}
+
+{% docs roster_status %}
+Flags whether a player is on the corresponding team's NHL roster.
+{% enddocs %}
+
+{% docs pos_abv %}
+The players abbreviated position.
+{% enddocs %}
+
+{% docs pos_name %}
+The players position name.
+{% enddocs %}
+
+{% docs pos_type %}
+The players position type. Groups C, LW & RW into Forward.
+{% enddocs %}
+
+{% docs team_name %}
+The name of the team.
+{% enddocs %}
+
+{% docs venue_id %}
+The id of the venue.
+{% enddocs %}
+
+{% docs tri_code %}
+The id of the venue.
+{% enddocs %}
+
+{% docs team_active_status %}
+Indicates whether team is active or inactive.
+{% enddocs %}
+
+{% docs venue_city %}
+The city in which the venue is located.
+{% enddocs %}
+
+{% docs venue_name %}
+The name of the venue.
+{% enddocs %}
+
+{% docs venue_timezone %}
+The timezone in which the venue is located.
+{% enddocs %}
+
+{% docs venue_timezone_offset %}
+The hour offset from UTC time from which the venue is located.
+{% enddocs %}
+
+{% docs birth_city %}
+The city in which the player was born.
+{% enddocs %}
+
+{% docs birth_country %}
+The country in which the player was born.
+{% enddocs %}
+
+{% docs birth_state_province %}
+The state or province in which the player was born.
+{% enddocs %}
+
+{% docs player_first_name %}
+The player's first name.
+{% enddocs %}
+
+{% docs player_last_name %}
+The player's last name.
+{% enddocs %}
+
+{% docs height_inches %}
+The player's height in inches.q
+{% enddocs %}
+
+{% docs nationality %}
+The player's nationality.
+{% enddocs %}
+
+{% docs handedness %}
+The player's handedness.
+{% enddocs %}
+
+{% docs weight %}
+The player's weight.
 {% enddocs %}

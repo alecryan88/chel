@@ -4,10 +4,10 @@ default:
     dev:
       type: snowflake
       account: pua88554
-      user:  flyers88
-      password:  VampireWeekend2021
+      user: flyers88
+      password: VampireWeekend2021
       role: ACCOUNTADMIN
       database: NHL_DB
       warehouse: NHL_ANALYTICS
-      schema: DBT_ARYAN
+      schema: staging
       threads: 200

@@ -81,3 +81,43 @@ The number of saves in a shootout.
 {% docs shootout_shots_faced %}
 The number of shots faced in a shootout.
 {% enddocs %}
+
+{% docs regulation_win %}
+A win after three periods.
+{% enddocs %}
+
+{% docs regulation_loss %}
+A loss after three periods.
+{% enddocs %}
+
+{% docs shootout_win %}
+A win in a shootout.
+{% enddocs %}
+
+{% docs shootout_loss %}
+A loss in a shootout.
+{% enddocs %}
+
+{% docs overtime_win %}
+A win in overtime.
+{% enddocs %}
+
+{% docs overtime_loss %}
+A loss in overtime.
+{% enddocs %}
+
+{% docs win %}
+Summation of regulation, overtime and shootout wins. Created to mimic standings logic.
+{% enddocs %}
+
+{% docs loss %}
+A duplicate column of regulation losses. Created to mimic standings logic.
+{% enddocs %}
+
+{% docs otl %}
+A loss in either overtime or a shooutout. Created to mimic standings logic.
+{% enddocs %}
+
+{% docs points %}
+The number of points awarded at the end of the game.
+{% enddocs %}
