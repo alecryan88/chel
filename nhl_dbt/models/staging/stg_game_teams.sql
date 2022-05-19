@@ -13,9 +13,8 @@ Select
     teams.value:division.id::int as division_id,
     teams.value:venue.id::int as  venue_id,
     teams.value:officialSiteUrl::string as url,
-    teams.value:triCode::string as tri_code,
-    teams.value:active::boolean as active_status,
-    '{{ run_started_at }}' as last_updated_dbt
+    teams.value:triCode::string as team_tri_code,
+    teams.value:active::boolean as team_active_status
    
 from {{source('NHL_DB_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:teams)) teams
 

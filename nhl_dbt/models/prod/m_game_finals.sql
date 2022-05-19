@@ -24,6 +24,7 @@ Select
         sum(coalesce(shots_missed,0)) as shots_missed,
         sum(coalesce(shots_on_goal,0)) as shots_on_goal,
         sum(coalesce(goals_against,0)) as goals_against,
+        sum(coalesce(overtime_goals_against,0)) as overtime_goals_against,
         sum(coalesce(saves,0)) as saves,
         sum(coalesce(hits,0)) as hits,
         sum(coalesce(received_hits,0)) as received_hits,
@@ -46,7 +47,12 @@ Select
         case when sum(coalesce(overtime_goals_scored,0)) < sum(coalesce(overtime_goals_against,0)) then 1 else 0 end overtime_loss,
         regulation_win + shootout_win + overtime_win as win,
         regulation_loss as loss,
-        shootout_loss + overtime_loss as otl
+        shootout_loss + overtime_loss as otl,
+        case
+            when win > 0 then 2
+            when otl > 0 then 1 
+            else 0
+        end points
           
 from {{ref( 'm_game_player_stats' )}}
 

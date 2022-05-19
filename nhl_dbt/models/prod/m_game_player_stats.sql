@@ -21,7 +21,7 @@ Select
         roster_status,
         jersey_number,
         pos_abv,
-        shoots_catches,
+        handedness,
         home_away_status,
         sum(coalesce(goals_scored,0))  as goals_scored,
         sum(coalesce(overtime_goals_scored,0))  as overtime_goals_scored,

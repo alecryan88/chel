@@ -13,8 +13,7 @@ Select
     teams.value:venue.city::string as venue_city,
     teams.value:venue.name::string as venue_name,
     teams.value:venue:timeZone.id::string as venue_timezone,
-    teams.value:venue:timeZone.offset::int as venue_timezone_offset,
-    '{{ run_started_at }}' as last_updated_dbt
+    teams.value:venue:timeZone.offset::int as venue_timezone_offset
    
 from {{source('NHL_DB_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:teams)) teams
 

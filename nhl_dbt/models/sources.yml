@@ -4,6 +4,7 @@ sources:
   - name: NHL_DB_RAW
     database: NHL_DB
     schema: RAW
+    
     tables:
       - name: RAW_NHL_GAME_DATA
-      
+        description: Data loaded by upstream dagster pipeline. The data is sourced from the NHL REST API https://statsapi.web.nhl.com
