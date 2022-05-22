@@ -4,7 +4,7 @@
         sort = 'game_id'
     )
 }}
-
+--test change
 {%- set table_name = this -%}
 Select 
         d.partition_date,

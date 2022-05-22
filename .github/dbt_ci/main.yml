@@ -1,5 +1,5 @@
 # This is a basic workflow to help you get started with Actions
-name: dbt_ci
+name: dbt_ci_test
 
 # Controls when the workflow will run
 on:
