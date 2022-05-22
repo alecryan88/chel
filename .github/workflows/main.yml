@@ -17,5 +17,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Pip install dbt
+        run: pip install dbt-core dbt-snowflake
+
       - name: dbt check state modified
         run: cd nhl_dbt && dbt ls --models state:modified --state . --profiles-dir . 
