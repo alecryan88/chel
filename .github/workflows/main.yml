@@ -1,13 +1,9 @@
 # This is a basic workflow to help you get started with Actions
 name: dbt_ci_test
 
-# Controls when the workflow will run
 on:
   pull_request:
     branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,6 +17,5 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
       - name: dbt check state modified
         run: dbt ls --models state:modified --state . --profiles-dir . 
