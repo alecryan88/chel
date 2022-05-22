@@ -5,6 +5,8 @@
     )
 }}
 
+--test
+
 {%- set table_name = this -%}
 Select 
         d.partition_date,
