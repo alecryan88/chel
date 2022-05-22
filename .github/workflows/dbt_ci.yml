@@ -1,9 +1,11 @@
 # This is a basic workflow to help you get started with Actions
-name: dbt_ci_test
+name: dbt_ci
 
 on:
   pull_request:
     branches: [ main ]
+    paths: 
+    - 'nhl_dbt/**'
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
