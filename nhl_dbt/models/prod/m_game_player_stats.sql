@@ -53,7 +53,6 @@ on g.player_id = d.player_id and g.game_id = d.game_id
 left join {{ref('stg_game_metadata')}} m
 on m.game_id = d.game_id 
 
---player team
 left join {{ref('stg_game_teams')}} t 
 on t.team_id = d.team_id  and t.game_id = d.game_id
 
