@@ -5,7 +5,7 @@
     )
 }}
 
---test
+--test_comment
 
 {%- set table_name = this -%}
 Select 
