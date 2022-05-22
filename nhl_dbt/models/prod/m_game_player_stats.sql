@@ -5,6 +5,8 @@
     )
 }}
 
+--- add CI test comment
+
 {%- set table_name = this -%}
 Select 
         d.partition_date,
