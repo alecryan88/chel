@@ -7,6 +7,9 @@ on:
     paths: 
     - 'nhl_dbt/**'
 
+env:
+  CI_SCHEMA: ${{ github.event.number }}
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -23,4 +26,5 @@ jobs:
         run: pip install dbt-core dbt-snowflake
 
       - name: dbt check state modified
-        run: cd nhl_dbt && dbt ls --models state:modified --state ./ci_manifest --profiles-dir . 
+        run: cd nhl_dbt && dbt run --models state:modified --state ./ci_manifest --profiles-dir . --target ci
+        
