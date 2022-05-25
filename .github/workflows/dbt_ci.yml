@@ -26,5 +26,5 @@ jobs:
         run: pip install dbt-core dbt-snowflake
 
       - name: dbt check state modified
-        run: cd nhl_dbt && dbt run --models state:modified --state ./ci_manifest --profiles-dir . --target ci
+        run: cd nhl_dbt && dbt run --models state:modified --defer --state  ./ci_manifest --profiles-dir . --target ci
         
