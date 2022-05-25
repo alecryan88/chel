@@ -6,6 +6,9 @@
 }}
 
 {%- set table_name = this -%}
+
+--test 
+
 Select 
         d.partition_date,
         d.game_id,
@@ -21,7 +24,7 @@ Select
         roster_status,
         jersey_number,
         pos_abv,
-        handedness,
+        handedness as test_column,
         home_away_status,
         sum(coalesce(goals_scored,0))  as goals_scored,
         sum(coalesce(overtime_goals_scored,0))  as overtime_goals_scored,

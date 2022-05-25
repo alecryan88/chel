@@ -9,5 +9,27 @@ default:
       role: ACCOUNTADMIN
       database: NHL_DB
       warehouse: NHL_ANALYTICS
-      schema: staging
-      threads: 200
+      schema: ANALYTICS_DEV
+      threads: 10
+
+    prod:
+      type: snowflake
+      account: pua88554
+      user: flyers88
+      password: VampireWeekend2021
+      role: ACCOUNTADMIN
+      database: NHL_DB
+      warehouse: NHL_ANALYTICS
+      schema: ANALYTICS
+      threads: 10
+
+    ci:
+      type: snowflake
+      account: pua88554
+      user: flyers88
+      password: VampireWeekend2021
+      role: ACCOUNTADMIN
+      database: NHL_DB
+      warehouse: NHL_ANALYTICS
+      schema: "{{ env_var('CI_SCHEMA') }}"
+      threads: 10
