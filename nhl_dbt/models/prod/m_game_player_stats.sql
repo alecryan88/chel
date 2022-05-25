@@ -7,8 +7,7 @@
 
 {%- set table_name = this -%}
 
---test 
-
+--comment new
 Select 
         d.partition_date,
         d.game_id,
