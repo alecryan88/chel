@@ -7,7 +7,6 @@
 
 {%- set table_name = this -%}
 
---test 
 
 Select 
         d.partition_date,
