@@ -8,7 +8,7 @@ on:
     - 'nhl_dbt/**'
 
 env:
-  CI_SCHEMA: ${{ github.event.number }}
+  CI_SCHEMA: dbt_ci_${{github.event.pull_request.number}}
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
