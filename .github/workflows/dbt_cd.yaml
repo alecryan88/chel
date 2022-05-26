@@ -46,3 +46,4 @@ jobs:
          SNOWFLAKE_USER: flyers88
          SNOWFLAKE_PASSWORD: VampireWeekend2021
          SNOWFLAKE_ACCOUNT: pua88554
+         SNOWFLAKE_DB: NHL_DB

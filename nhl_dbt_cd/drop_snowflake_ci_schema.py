@@ -12,4 +12,11 @@ conn = snowflake.connector.connect(
 )
 
 #Drop schema created by CI process
-conn.cursor().execute(f"DROP SCHEMA IF EXISTS {os.environ['CI_SCHEMA']} CASCADE")
+conn.cursor().execute(f"""
+
+USE DATABASE {os.environ['SNOWFLAKE+DB']}
+
+DROP SCHEMA IF EXISTS {os.environ['CI_SCHEMA']} CASCADE"""
+
+
+)
