@@ -14,9 +14,10 @@ conn = snowflake.connector.connect(
 #Drop schema created by CI process
 conn.cursor().execute(f"""
 
-USE DATABASE {os.environ['SNOWFLAKE_DB']}
+    USE DATABASE {os.environ['SNOWFLAKE_DB']} ; 
 
-DROP SCHEMA IF EXISTS {os.environ['CI_SCHEMA']} CASCADE"""
+    DROP SCHEMA IF EXISTS {os.environ['CI_SCHEMA']} CASCADE ;
 
+    """
 
 )
