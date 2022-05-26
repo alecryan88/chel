@@ -22,9 +22,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Pip install dbt
+      - name: Install dependencies
         run: pip install dbt-core dbt-snowflake
 
-      - name: dbt check state modified
-        run: cd nhl_dbt && dbt run --models state:modified --defer --state  ./ci_manifest --profiles-dir . --target ci
-        
+      - name: dbt run modified models & their children
+        run: cd nhl_dbt && dbt run --models state:modified+ --defer --state  ./ci_manifest --profiles-dir . --target ci
+
+      - name: dbt test modified models & their children
+        run: cd nhl_dbt && dbt test --models state:modified+ --defer --state  ./ci_manifest --profiles-dir . --target ci
