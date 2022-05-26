@@ -33,7 +33,7 @@ jobs:
 
 
       - name: upload manifest to production s3 bucket
-        run: python nhl_dbt_cd/nhl_dbt_cd.py --path nhl_dbt/target/manifest.json
+        run: python nhl_dbt_cd/nhl_dbt_cd.py --path ./nhl_dbt/target/manifest.json
         env:
           AWS_S3_BUCKET: nhl_prod_dbt_manifest
           AWS_ACCESS_KEY_ID: AKIAZNPFTOMRZY4URRGB
