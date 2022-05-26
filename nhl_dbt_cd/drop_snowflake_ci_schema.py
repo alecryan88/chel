@@ -17,3 +17,5 @@ conn.cursor().execute(f"""USE DATABASE {os.environ['SNOWFLAKE_DB']};""")
 
 #Drop schema created by CI process
 conn.cursor().execute(f"""DROP SCHEMA IF EXISTS {os.environ['CI_SCHEMA']} CASCADE ;""")
+
+print(f"Deleted schema {os.environ['CI_SCHEMA']} from {os.environ['SNOWFLAKE_DB']} succesfully.")
