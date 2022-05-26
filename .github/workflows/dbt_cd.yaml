@@ -3,7 +3,7 @@ name: dbt_cd
 on:
   push:
     branches:
-      - master
+      - main
       
 # Get the schema created by the pull request. We'll want to delete this to clean up snowflake.
 env:

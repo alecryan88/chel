@@ -7,6 +7,7 @@
 
 {%- set table_name = this -%}
 
+-- Comments
 Select  
         partition_date,
         game_id,
