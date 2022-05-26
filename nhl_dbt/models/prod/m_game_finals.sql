@@ -7,8 +7,6 @@
 
 {%- set table_name = this -%}
 
--- comment ALTER
-
 Select  
         partition_date,
         game_id,
