@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-
+      
 # Get the schema created by the pull request. We'll want to delete this to clean up snowflake.
 env:
   CI_SCHEMA: dbt_ci_${{github.event.pull_request.number}}
