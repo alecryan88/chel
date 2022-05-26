@@ -21,7 +21,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Setup Python3
+      - name: Setup Python 3
         uses: actions/setup-python@v3
         with:
           python-version: 3.8
@@ -32,9 +32,17 @@ jobs:
           pip install -r requirements.txt
 
 
-      - name: upload manifest to production s3 bucket
-        run: python nhl_dbt_cd/nhl_dbt_cd.py --path nhl_dbt/target/manifest.json
+      - name: Update dbt manifest in prod s3 bucket
+        run: python nhl_dbt_cd/upload_manifest_to_s3.py --path nhl_dbt/target/manifest.json
         env:
           AWS_S3_BUCKET: nhl-prod-dbt-manifest
           AWS_ACCESS_KEY_ID: AKIAZNPFTOMRZY4URRGB
           AWS_SECRET_ACCESS_KEY: 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
+
+
+      - name: Drop snowflake CI schema
+        run: python nhl_dbt_cd/drop_snowflake_ci_schema.py
+        env:
+         SNOWFLAKE_USER: flyers88
+         SNOWFLAKE_PASSWORD: VampireWeekend2021
+         SNOWFLAKE_ACCOUNT: pua88554
