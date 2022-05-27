@@ -7,7 +7,7 @@ conn = snowflake.connector.connect(
     password=os.environ['SNOWFLAKE_PASSWORD'],
     account=os.environ['SNOWFLAKE_ACCOUNT'],
     session_parameters={
-        'QUERY_TAG': 'EndOfMonthFinancials',
+        'QUERY_TAG': 'dbt_CI_CD',
     }
 )
 
@@ -19,3 +19,9 @@ conn.cursor().execute(f"""USE DATABASE {os.environ['SNOWFLAKE_DB']};""")
 conn.cursor().execute(f"""DROP SCHEMA IF EXISTS {os.environ['CI_SCHEMA']} CASCADE ;""")
 
 print(f"Deleted schema {os.environ['CI_SCHEMA']} from {os.environ['SNOWFLAKE_DB']} succesfully.")
+
+
+
+
+#Drop schema if exists 
+    #If not then do something ...
