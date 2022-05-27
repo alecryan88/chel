@@ -7,6 +7,7 @@
 
 {%- set table_name = this -%}
 
+-- Comment
 
 Select 
         d.partition_date,
