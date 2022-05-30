@@ -1,35 +1,35 @@
-from dagster import asset, AssetGroup
-from dagster_snowflake import snowflake_resource
+from dagster import op, In, Nothing
 
-
-@asset(
-    required_resource_keys={'snowflake','run_parameters'},
-    compute_kind='SQL'
-)
+@op(
+    config_schema={'date': str}, 
+    required_resource_keys={'snowflake'},
+    ins={"start": In(Nothing)}
+    )
 def delete_partition_from_snowflake(context):
     '''
     Delete partition = run date from snowflake.
     '''
     
-    partition_key = context.resources.run_parameters['run_date']
+    date = context.op_config["date"]
     
     context.resources.snowflake.execute_query(f"""
         
         DELETE FROM RAW.RAW_NHL_GAME_DATA
-        where partition_date = date('{partition_key}')
+        where partition_date = date('{date}')
         """
     )
 
-@asset(
-    required_resource_keys={'snowflake', 'run_parameters'},
-    compute_kind='SQL'
-)
-def copy_partition_into_snowflake(context, delete_partition_from_snowflake):
+@op(
+    config_schema={'date': str}, 
+    required_resource_keys={'snowflake'},
+    ins={"start": In(Nothing)}
+    )
+def copy_partition_into_snowflake(context):
     '''
     Copy partition into snowflake from s3
     '''
     
-    partition_key = context.resources.run_parameters['run_date']
+    date = context.op_config["date"]
 
     context.resources.snowflake.execute_query(f"""
         
@@ -43,7 +43,7 @@ def copy_partition_into_snowflake(context, delete_partition_from_snowflake):
                 
         from @RAW.RAW_NHL_GAME_DATA
         )
-        pattern = '.*partition_date={partition_key}.*.json'
+        pattern = '.*partition_date={date}.*.json'
         force = TRUE;
         """
     )
