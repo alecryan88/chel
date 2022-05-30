@@ -4,6 +4,7 @@ from nhl_dagster.ops.dbt_ops import *
 from nhl_dagster.ops.snowflake_ops import *
 from nhl_dagster.partitions.daily_partitions import nhl_elt_daily_config
 from nhl_dagster.resources.resources import * 
+
 @job(
     config=nhl_elt_daily_config,
     resource_defs={
