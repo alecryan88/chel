@@ -28,7 +28,8 @@ def load_dbt_manifest_to_s3(context):
     Loads dbt manifest in specified location to bucket in s3.
 
     '''
-    s3.meta.client.upload_file(
-        './nhl_dbt/target/manifest.json', 
-        os.environ['AWS_S3_BUCKET'], 
-        'manifest.json')
+    context.resources.s3.put_object(
+        Body='./nhl_dbt/target/manifest.json',
+        Bucket='nhl-prod-dbt-manifest',
+        Key='manifest.json'
+    )

@@ -20,3 +20,4 @@ def run_elt():
     copy_partition = copy_partition_into_snowflake(start=delete_partition)
     dbt_run_models = dbt_run(start=copy_partition)
     dbt_test_models = dbt_test(start=dbt_run_models)
+    dbt_load_manifest = load_dbt_manifest_to_s3(start=dbt_test_models)
