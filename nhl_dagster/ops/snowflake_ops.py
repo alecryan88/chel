@@ -1,7 +1,7 @@
 from dagster import op, In, Nothing
 
 @op(
-    config_schema={'run_date': str}, 
+    config_schema={'date': str}, 
     required_resource_keys={'snowflake'},
     ins={"start": In(Nothing)}
     )
@@ -10,7 +10,7 @@ def delete_partition_from_snowflake(context):
     Delete partition = run date from snowflake.
     '''
     
-    date = context.op_config["run_date"]
+    date = context.op_config["date"]
     
     context.resources.snowflake.execute_query(f"""
         
@@ -20,7 +20,7 @@ def delete_partition_from_snowflake(context):
     )
 
 @op(
-    config_schema={'run_date': str}, 
+    config_schema={'date': str}, 
     required_resource_keys={'snowflake'},
     ins={"start": In(Nothing)}
     )
@@ -29,7 +29,7 @@ def copy_partition_into_snowflake(context):
     Copy partition into snowflake from s3
     '''
     
-    date = context.op_config["run_date"]
+    date = context.op_config["date"]
 
     context.resources.snowflake.execute_query(f"""
         
