@@ -16,10 +16,10 @@ def load_dbt_manifest_to_s3(path_to_manifest):
     '''
 
     with open(path_to_manifest) as file:
-        json = json.load(file)
+        manifest = json.load(file)
 
         s3.put_object(
-        Body=json,
+        Body=manifest,
         Bucket=os.environ['AWS_S3_BUCKET'],
         Key='manifest.json'
         )
