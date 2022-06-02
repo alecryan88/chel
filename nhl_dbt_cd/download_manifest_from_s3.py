@@ -8,9 +8,10 @@ s3_client = boto3.client('s3',
                       )
 
 file = 'manifest.json'
+location = 'nhl_dbt/ci_manifest/'+file 
 
 bucket = 'nhl-prod-dbt-manifest'
 
-s3_client.download_file(bucket, file, file)
+s3_client.download_file(bucket, file, location)
 
 print("Success.")
