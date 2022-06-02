@@ -3,13 +3,13 @@ import io
 from dagster import op, get_dagster_logger, In, Nothing
 from dagster_aws.s3.resources import s3_resource
 
-@op(config_schema={'date': str})
+@op(required_resource_keys={'s3', 'run_date'})
 def extract_game_ids_to_list(context):
     '''
     Extzracts the game_ids on the execution_date and returns them in a game_id_list.
     '''
 
-    date = context.op_config["date"]
+    date = context.resources.run_date
 
     game_id_list = []
     
@@ -30,13 +30,13 @@ def extract_game_ids_to_list(context):
     return game_id_list
 
    
-@op(config_schema={'date': str}, required_resource_keys={'s3'})
+@op(required_resource_keys={'s3', 'run_date'})
 def load_game_data_to_s3(context, game_id_list):
     '''
     Load game_data to s3 in JSON format.
     '''
 
-    date = context.op_config["date"]
+    date = context.resources.run_date
 
     for game_id in game_id_list:
         r = requests.get(f'https://statsapi.web.nhl.com/api/v1/game/{game_id}/feed/live')
