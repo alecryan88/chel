@@ -28,7 +28,7 @@ jobs:
           pip install -r requirements.txt
 
       #Downloads prod dbt manifest to compare agaist
-      - name: Fetch prod dbt_manifest:
+      - name: Fetch prod dbt_manifest
         run: python nhl_dbt_cd/download_manifest_from_s3.py
 
       #Compile generates new dbt manifest with app code 
