@@ -3,7 +3,7 @@ import argparse
 import os
 
 #Instantiate s3 client 
-s3 = boto3.resource('s3')
+s3 = boto3.client('s3')
 
 parser = argparse.ArgumentParser(description='A parser for dbt_CI_CD manifest upload.')
 parser.add_argument("--path")
