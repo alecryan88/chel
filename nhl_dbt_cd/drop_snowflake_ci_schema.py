@@ -19,9 +19,3 @@ conn.cursor().execute(f"""USE DATABASE {os.environ['SNOWFLAKE_DB']};""")
 conn.cursor().execute(f"""DROP SCHEMA IF EXISTS {os.environ['CI_SCHEMA']} CASCADE ;""")
 
 print(f"Deleted schema {os.environ['CI_SCHEMA']} from {os.environ['SNOWFLAKE_DB']} succesfully.")
-
-
-
-
-#Drop schema if exists 
-    #If not then do something ...

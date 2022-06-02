@@ -25,6 +25,11 @@ jobs:
       - name: Install dependencies
         run: pip install dbt-core dbt-snowflake
 
+  
+      #Compile generates new dbt manifest with app code 
+      - name: dbt compile - generate new manifest
+        run: cd nhl_dbt && dbt compile --profiles-dir .
+
       - name: dbt run modified models & their children
         run: cd nhl_dbt && dbt run --models state:modified+ --defer --state  ./ci_manifest --profiles-dir . --target ci
 

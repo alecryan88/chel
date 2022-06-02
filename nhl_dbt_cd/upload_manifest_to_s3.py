@@ -2,7 +2,6 @@ import boto3
 import argparse
 import os
 
-
 #Instantiate s3 client 
 s3 = boto3.resource('s3')
 
@@ -14,11 +13,11 @@ def load_dbt_manifest_to_s3(path_to_manifest):
     Loads dbt manifest in specified location to bucket in s3.
 
     '''
-    s3.meta.client.upload_file(
-        path_to_manifest, 
-        os.environ['AWS_S3_BUCKET'], 
-        'manifest.json')
-
+    s3.put_object(
+     Body=json.dumps(path_to_manifest),
+     Bucket=os.environ['AWS_S3_BUCKET'],
+     Key='manifest.json'
+    )
 
 args = parser.parse_args()
 
