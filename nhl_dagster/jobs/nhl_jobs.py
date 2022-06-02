@@ -1,4 +1,4 @@
-from dagster import job, op, get_dagster_logger, In, Nothing
+from dagster import job, op, get_dagster_logger, In, Nothing, ResourceDefinition
 from nhl_dagster.ops.s3_ops import *
 from nhl_dagster.ops.dbt_ops import *
 from nhl_dagster.ops.snowflake_ops import *
@@ -10,7 +10,8 @@ from nhl_dagster.resources.resources import *
     resource_defs={
         "s3": s3_resource,
         "snowflake": snowflake_resource_configured,
-        "dbt": dbt_resource_configured
+        "dbt": dbt_resource_configured,
+        "run_date":ResourceDefinition.string_resource()
         }
     )
 def run_elt():
