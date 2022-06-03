@@ -32,7 +32,7 @@
 - [Acknowledgments](#acknowledgement)
 
 ## 🧐 About <a name = "about"></a>
-Write about 1-2 paragraphs describing the purpose of your project.
+CHEL was created as a solution for keeping up with NHL scores. It also serves as an opportuntiy to develop technical skills using common modern data stack tools such as dbt, Dagster and Metabase.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
@@ -90,6 +90,7 @@ Add additional notes about how to deploy this on a live system.
 - [Snowflake](https://www.snowflake.com/) - Data Warehouse
 - [AWS S3](https://aws.amazon.com/) - Storage
 - [GitHub Actions](https://docs.github.com/en/actions) - CI/CD
+- [Metabase](https://www.metabase.com/) - Data Viz
 
 ## ✍️ Authors <a name = "authors"></a>
 - [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
