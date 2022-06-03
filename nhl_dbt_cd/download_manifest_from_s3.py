@@ -12,10 +12,12 @@ location = 'nhl_dbt/ci_manifest/manifest.json'
 
 bucket = 'nhl-prod-dbt-manifest'
 
+print(f"Loading file to {location}.")
+
 s3_client.download_file(
     Bucket=bucket, 
     Key=filename, 
     Filename=location
     )
 
-print("Success.")
+print(f"Successly loaded file to {location}.")
