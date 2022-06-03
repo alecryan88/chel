@@ -85,10 +85,10 @@ Add notes about how to use the system.
 Add additional notes about how to deploy this on a live system.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [Dagster] (https://dagster.io/) - Orchestration
+- [dbt] - (https://www.getdbt.com/) - Transformation & Documentation
+- [Snowflake] - (https://www.snowflake.com/) - Data Warehouse
+- [AWS S3]([https://www.mongodb.com/](https://aws.amazon.com/)) - Storage
 
 ## ✍️ Authors <a name = "authors"></a>
 - [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
