@@ -45,7 +45,7 @@ jobs:
       - name: Drop snowflake CI schema
         run: python nhl_dbt_cd/drop_snowflake_ci_schema.py
         env:
-         SNOWFLAKE_USER: flyers88
-         SNOWFLAKE_PASSWORD: VampireWeekend2021
-         SNOWFLAKE_ACCOUNT: pua88554
+         SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+         SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
+         SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
          SNOWFLAKE_DB: NHL_DB
