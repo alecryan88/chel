@@ -8,7 +8,7 @@ s3_client = boto3.client('s3',
                       )
 
 file = 'manifest.json'
-location = 'nhl_dbt/ci_manifest/'+file 
+location = 'nhl_dbt/ci_manifest/manifest.json'
 
 bucket = 'nhl-prod-dbt-manifest'
 

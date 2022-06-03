@@ -30,6 +30,10 @@ jobs:
       #Downloads prod dbt manifest to compare agaist
       - name: Fetch prod dbt_manifest
         run: python nhl_dbt_cd/download_manifest_from_s3.py
+        env:
+          AWS_S3_BUCKET: nhl-prod-dbt-manifest
+          AWS_ACCESS_KEY_ID: AKIAZNPFTOMRZY4URRGB
+          AWS_SECRET_ACCESS_KEY: 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
 
       #Compile generates new dbt manifest with app code 
       - name: dbt compile - generate new manifest
