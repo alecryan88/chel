@@ -87,8 +87,9 @@ Add additional notes about how to deploy this on a live system.
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [Dagster](https://dagster.io/) - Orchestration
 - [dbt](https://www.getdbt.com/) - Transformation & Documentation
-- [Snowflake]([https://www.snowflake.com/]) - Data Warehouse
+- [Snowflake](https://www.snowflake.com/) - Data Warehouse
 - [AWS S3](https://aws.amazon.com/) - Storage
+- [GitHub Actions](https://docs.github.com/en/actions) - CI/CD
 
 ## ✍️ Authors <a name = "authors"></a>
 - [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
