@@ -5,6 +5,8 @@
     )
 }}
 
+-- Add comment
+
 Select 
     partition_date,
     JSON_EXTRACT:gameData:game:pk::string as game_id,
