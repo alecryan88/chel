@@ -55,7 +55,7 @@ Select
             else 0
         end points
           
-from {{ref( 'm_game_player_stats' )}}
+from {{ref( 'game_player_stats' )}}
 
 {% if is_incremental() %}
 where partition_date = date('{{ var('run_date') }}')
