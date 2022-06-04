@@ -14,7 +14,6 @@ conn = snowflake.connector.connect(
 #Specify database where CI schema is located
 conn.cursor().execute(f"""USE DATABASE {os.environ['SNOWFLAKE_DB']};""")
 
-
 #Drop schema created by CI process
 conn.cursor().execute(f"""DROP SCHEMA IF EXISTS {os.environ['CI_SCHEMA']} CASCADE ;""")
 
