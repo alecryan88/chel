@@ -13,6 +13,8 @@ snowflake_resource_configured = snowflake_resource.configured({
 )
 
 dbt_resource_configured = dbt_cli_resource.configured({
-    'profiles_dir': './nhl_dbt', 'project_dir': './nhl_dbt'
+    'profiles_dir': './nhl_dbt', 
+    'project_dir': './nhl_dbt',
+    'target': 'prod'
     }
 )
