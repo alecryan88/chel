@@ -49,3 +49,6 @@ jobs:
          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
          SNOWFLAKE_DB: NHL_DB
+
+      - name: Execute dbt full-refresh of all models w/new
+        run: cd nhl_dbt && dbt run --full-refresh --profiles-dir . --target prod
