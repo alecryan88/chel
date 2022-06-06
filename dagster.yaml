@@ -17,8 +17,8 @@ run_launcher:
 
     container_kwargs:
       volumes:
-        - /Users/alecryan/Desktop/nhl-analytics-pipleine/nhl_dagster:/opt/dagster/app/nhl_dagster
-        - /Users/alecryan/Desktop/nhl-analytics-pipleine/nhl_dbt:/opt/dagster/app/nhl_dbt
+        - /Users/alecryan/Desktop/chel/nhl_dagster:/opt/dagster/app/nhl_dagster
+        - /Users/alecryan/Desktop/chel/nhl_dbt:/opt/dagster/app/nhl_dbt
     network: docker_example_network
     
     

@@ -14,8 +14,8 @@ services:
       DAGSTER_POSTGRES_DB: "dagster_nhl_db"
       DAGSTER_CURRENT_IMAGE: "docker_example_user_code_image"
     volumes:
-      - /Users/alecryan/Desktop/nhl-analytics-pipleine/nhl_dagster:/opt/dagster/app/nhl_dagster/ 
-      - /Users/alecryan/Desktop/nhl-analytics-pipleine/nhl_dbt:/opt/dagster/app/nhl_dbt/ 
+      - /Users/alecryan/Desktop/chel/nhl_dagster:/opt/dagster/app/nhl_dagster/ 
+      - /Users/alecryan/Desktop/chel/nhl_dbt:/opt/dagster/app/nhl_dbt/ 
     networks:
       - docker_example_network
 
@@ -71,21 +71,6 @@ services:
       - docker_example_network
     depends_on:
       - docker_example_user_code
-
-  docker_metabase:
-    container_name: 'docker_metabase'
-    image: metabase/metabase
-    restart: always
-    environment:
-      MB_DB_TYPE: 'postgres'
-      MB_DB_HOST: 'dagster-nhl-db.c6wn0bsfrbft.us-east-2.rds.amazonaws.com'
-      MB_DB_DBNAME: 'metabase'
-      MB_DB_PORT: '5432'
-      MB_DB_USER: 'postgres'
-      MB_DB_PASS: 'postgres'
-    ports:
-      # <Port exposed>:<Port running inside container>
-      - "3001:3000"
 
 networks:
   docker_example_network:
