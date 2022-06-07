@@ -13,9 +13,6 @@ services:
       DAGSTER_POSTGRES_PASSWORD: "postgres"
       DAGSTER_POSTGRES_DB: "nhl_dagster"
       DAGSTER_CURRENT_IMAGE: "docker_example_user_code_image"
-    volumes:
-      - /Users/alecryan/Desktop/chel/nhl_dagster:/opt/dagster/app/nhl_dagster/ 
-      - /Users/alecryan/Desktop/chel/nhl_dbt:/opt/dagster/app/nhl_dbt/ 
     networks:
       - docker_example_network
 

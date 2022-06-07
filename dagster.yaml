@@ -29,8 +29,8 @@ run_storage:
     postgres_db:
       username: postgres
       password: postgres
-      hostname: dagster-nhl-db.c6wn0bsfrbft.us-east-2.rds.amazonaws.com
-      db_name: dagster_nhl_db
+      hostname: nhl-elt.cqeaovrgsbgl.us-east-1.rds.amazonaws.com
+      db_name: nhl_dagster
       port: 5432
 
 event_log_storage:
@@ -40,8 +40,8 @@ event_log_storage:
     postgres_db:
       username: postgres
       password: postgres
-      hostname: dagster-nhl-db.c6wn0bsfrbft.us-east-2.rds.amazonaws.com
-      db_name: dagster_nhl_db
+      hostname: nhl-elt.cqeaovrgsbgl.us-east-1.rds.amazonaws.com
+      db_name: nhl_dagster
       port: 5432
 
 schedule_storage:
@@ -51,8 +51,8 @@ schedule_storage:
     postgres_db:
       username: postgres
       password: postgres
-      hostname: dagster-nhl-db.c6wn0bsfrbft.us-east-2.rds.amazonaws.com
-      db_name: dagster_nhl_db
+      hostname: nhl-elt.cqeaovrgsbgl.us-east-1.rds.amazonaws.com
+      db_name: nhl_dagster
       port: 5432
 
 telemetry:
