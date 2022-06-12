@@ -6,5 +6,4 @@ storage/
 schedules/
 .logs_queue
 logs
-nhl_venv
 *.env
