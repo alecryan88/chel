@@ -8,10 +8,9 @@ services:
     container_name: docker_example_user_code
     image: docker_example_user_code_image
     restart: always
+    env_file:
+      - dev.env
     environment:
-      DAGSTER_POSTGRES_USER: "postgres"
-      DAGSTER_POSTGRES_PASSWORD: "postgres"
-      DAGSTER_POSTGRES_DB: "nhl_dagster"
       DAGSTER_CURRENT_IMAGE: "docker_example_user_code_image"
     volumes:
       - /Users/alecryan/Desktop/chel/nhl_dagster:/opt/dagster/app/nhl_dagster/ 
@@ -39,10 +38,8 @@ services:
       - "3000"
     ports:
       - "3000:3000"
-    environment:
-      DAGSTER_POSTGRES_USER: "postgres"
-      DAGSTER_POSTGRES_PASSWORD: "postgres"
-      DAGSTER_POSTGRES_DB: "nhl_dagster"
+    env_file:
+      - dev.env
     volumes: # Make docker client accessible so we can terminate containers from dagit
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
@@ -61,10 +58,8 @@ services:
       - run
     container_name: docker_example_daemon
     restart: on-failure
-    environment:
-      DAGSTER_POSTGRES_USER: "postgres"
-      DAGSTER_POSTGRES_PASSWORD: "postgres"
-      DAGSTER_POSTGRES_DB: "nhl_dagster"
+    env_file:
+      - dev.env
     volumes: # Make docker client accessible so we can launch containers using host docker
       - /var/run/docker.sock:/var/run/docker.sock
     networks:

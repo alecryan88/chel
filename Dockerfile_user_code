@@ -18,9 +18,6 @@ WORKDIR /opt/dagster/app
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-ENV AWS_ACCESS_KEY_ID=AKIAZNPFTOMRZY4URRGB
-ENV AWS_SECRET_ACCESS_KEY=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
-
 EXPOSE 4000
 
 # CMD allows this to be overridden from run launchers or executors that want
