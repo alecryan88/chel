@@ -3,33 +3,33 @@ default:
   outputs:
     dev:
       type: snowflake
-      account: pua88554
-      user: flyers88
-      password: VampireWeekend2021
-      role: ACCOUNTADMIN
-      database: NHL_DB
-      warehouse: NHL_ANALYTICS
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
       schema: ANALYTICS_DEV
       threads: 10
 
     prod:
       type: snowflake
-      account: pua88554
-      user: flyers88
-      password: VampireWeekend2021
-      role: ACCOUNTADMIN
-      database: NHL_DB
-      warehouse: NHL_ANALYTICS
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
       schema: ANALYTICS
       threads: 10
 
     ci:
       type: snowflake
-      account: pua88554
-      user: flyers88
-      password: VampireWeekend2021
-      role: ACCOUNTADMIN
-      database: NHL_DB
-      warehouse: NHL_ANALYTICS
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}"
       schema: "{{ env_var('CI_SCHEMA') }}"
       threads: 10

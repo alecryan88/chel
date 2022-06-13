@@ -2,6 +2,7 @@ import requests
 import io
 from dagster import op, get_dagster_logger, In, Nothing
 from dagster_aws.s3.resources import s3_resource
+import os
 
 @op(required_resource_keys={'s3', 'run_date'})
 def extract_game_ids_to_list(context):
@@ -46,6 +47,6 @@ def load_game_data_to_s3(context, game_id_list):
 
         context.resources.s3.put_object(
             Body=json,
-            Bucket='nhl-analytics',
+            Bucket=os.environ['RAW_DATA_BUCKET'],
             Key=f'nhl-game-data/partition_date={date}/{game_id}.json'
         )

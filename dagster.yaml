@@ -17,6 +17,14 @@ run_launcher:
       - DAGSTER_PG_DB
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
+      - SNOWFLAKE_ACCOUNT
+      - SNOWFLAKE_USER
+      - SNOWFLAKE_PASSWORD
+      - SNOWFLAKE_ROLE
+      - SNOWFLAKE_DATABASE
+      - SNOWFLAKE_WAREHOUSE
+      - DBT_DIR
+      - RAW_DATA_BUCKET
 
     container_kwargs:
       volumes:
