@@ -1,5 +1,4 @@
 dbt_modules/
 logs/
 target/*
-!target/manifest.json
 dev.env

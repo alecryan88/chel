@@ -4,6 +4,12 @@ sources:
   - name: NHL_DB_RAW
     database: NHL_DB
     schema: RAW
+
+
+    freshness:
+      warn_after: {count: 2, period: day}
+    
+    loaded_at_field: "to_timestamp(partition_date)"
     
     tables:
       - name: RAW_NHL_GAME_DATA
