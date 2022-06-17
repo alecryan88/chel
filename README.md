@@ -77,6 +77,9 @@ Explain what these tests test and why
 Give an example
 ```
 
+## Archictecture
+
+
 ## 🎈 Usage <a name="usage"></a>
 Add notes about how to use the system.
 
@@ -90,13 +93,3 @@ Add additional notes about how to deploy this on a live system.
 - [AWS S3](https://aws.amazon.com/) - Storage
 - [GitHub Actions](https://docs.github.com/en/actions) - CI/CD
 - [Metabase](https://www.metabase.com/) - Data Viz
-
-## ✍️ Authors <a name = "authors"></a>
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
-- Hat tip to anyone whose code was used
-- Inspiration
-- References

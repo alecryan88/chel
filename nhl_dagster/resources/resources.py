@@ -3,7 +3,6 @@ from dagster_dbt import dbt_cli_resource
 from dagster_snowflake import snowflake_resource
 import os
 
-
 snowflake_resource_configured = snowflake_resource.configured({
     'account': os.environ['SNOWFLAKE_ACCOUNT'],
     'user': os.environ['SNOWFLAKE_USER'], 
