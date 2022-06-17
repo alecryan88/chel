@@ -31,6 +31,6 @@ models:
   dbt_nhl_analytics:
     +on_schema_change: "sync_all_columns"
     prod:
-      +materialized: incremental
+      +materialized: view
     staging:
-      +materialized: incremental
+      +materialized: view
