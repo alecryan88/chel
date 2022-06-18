@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        incremental_strategy='delete+insert'
-    )
-}}
-
 Select 
     partition_date,
     JSON_EXTRACT:gameData:game:pk::string as game_id,
@@ -14,10 +7,7 @@ Select
     teams.value:venue.id::int as  venue_id,
     teams.value:officialSiteUrl::string as url,
     teams.value:triCode::string as team_tri_code,
-    teams.value:active::boolean as team_active_status
+    teams.value:active::boolean as team_active_status,
+    '{{ run_started_at }}' as last_updated_dbt
    
-from {{source('NHL_DB_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:teams)) teams
-
-{% if is_incremental() %}
-where partition_date = date('{{ var('run_date') }}')
-{% endif %}
+from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:teams)) teams

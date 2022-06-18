@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        sort = 'partition_date'
-    )
-}}
-
 {%- set table_name = this -%}
 
 -- Comments

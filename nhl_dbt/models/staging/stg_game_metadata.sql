@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        incremental_strategy='delete+insert'
-    )
-}}
-
 Select
     partition_date,
     JSON_EXTRACT:gameData:game:season::string as game_season,
@@ -14,10 +7,7 @@ Select
     JSON_EXTRACT:gameData:teams:home.id as home_team_id,
     JSON_EXTRACT:gameData:datetime:dateTime::timestamp as game_start,
     JSON_EXTRACT:gameData:datetime:endDateTime::timestamp as game_end,
-    JSON_EXTRACT:gameData:status:abstractGameState::string as game_state
+    JSON_EXTRACT:gameData:status:abstractGameState::string as game_state,
+    '{{ run_started_at }}' as last_updated_dbt
 
-from {{source('NHL_DB_RAW', 'RAW_NHL_GAME_DATA')}}
-
-{% if is_incremental() %}
-where partition_date = date('{{ var('run_date') }}')
-{% endif %}
+from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}

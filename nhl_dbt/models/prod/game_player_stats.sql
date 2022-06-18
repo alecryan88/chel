@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        sort = 'game_id'
-    )
-}}
-
 {%- set table_name = this -%}
 
 -- Comment

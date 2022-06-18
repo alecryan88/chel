@@ -6,7 +6,8 @@ import io
 
 @asset(
     partitions_def=daily_partitions_def,
-    compute_kind='python'
+    compute_kind='python',
+    group_name="nhl_game_data_s3"
 )
 def extract_game_ids_to_list(context):
     '''
@@ -35,7 +36,8 @@ def extract_game_ids_to_list(context):
 @asset(
     required_resource_keys={'s3'},
     partitions_def=daily_partitions_def,
-    compute_kind='python'
+    compute_kind='python',
+    group_name = 'nhl_game_data_s3'
 )
 def load_game_data_to_s3(context, extract_game_ids_to_list):
     '''

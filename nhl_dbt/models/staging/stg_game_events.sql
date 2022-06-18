@@ -1,11 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        incremental_strategy='delete+insert',
-        unique_key = 'play_id'
-    )
-}}
-
 Select 
     partition_date,
     {{ dbt_utils.surrogate_key(['JSON_EXTRACT:gameData:game:pk::string', 'plays.value:about:eventId::int', 'plays.value:about.ordinalNum::string '])}} as play_id,
@@ -24,8 +16,4 @@ Select
     plays.value:about.ordinalNum::string as period_s,
     '{{ run_started_at }}' as last_updated_dbt
 
-from {{source('NHL_DB_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData.plays.allPlays)) plays
-
-{% if is_incremental() %}
-where partition_date = date('{{ var('run_date') }}')
-{% endif %}
+from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData.plays.allPlays)) plays

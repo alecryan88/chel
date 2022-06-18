@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        incremental_strategy='delete+insert'
-    )
-}}
-
 Select 
     partition_date,
     JSON_EXTRACT:gameData:game:pk::string as game_id,
@@ -21,14 +14,11 @@ Select
     players.value:person:shootsCatches::varchar as handedness,
     players.value:position:abbreviation::varchar as pos_abv,
     players.value:position:name::varchar as pos_name,
-    players.value:position:type::varchar as pos_type
+    players.value:position:type::varchar as pos_type,
+    '{{ run_started_at }}' as last_updated_dbt
 
     
-from {{source('NHL_DB_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:teams:away:players)) players
-
-{% if is_incremental() %}
-where partition_date = date({{ var('run_date') }})
-{% endif %}
+from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:teams:away:players)) players
 
 union
 
@@ -48,11 +38,8 @@ Select
     players.value:person:shootsCatches::varchar as handedness,
     players.value:position:abbreviation::varchar as pos_abv,
     players.value:position:name::varchar as pos_name,
-    players.value:position:type::varchar as pos_type
+    players.value:position:type::varchar as pos_type,
+    '{{ run_started_at }}' as last_updated_dbt
 
     
-from {{source('NHL_DB_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:teams:home:players)) players
-
-{% if is_incremental() %}
-where partition_date = date('{{ var('run_date') }}')
-{% endif %}
+from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:teams:home:players)) players

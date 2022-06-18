@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        incremental_strategy='delete+insert'
-    )
-}}
-
 Select 
     partition_date,
     JSON_EXTRACT:gameData:game:pk::string as game_id,
@@ -15,8 +8,4 @@ Select
     officials.value:officialType::string as official_type,
     '{{ run_started_at }}' as last_updated_dbt
     
-from {{source('NHL_DB_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:officials)) officials
-
-{% if is_incremental() %}
-where partition_date = date('{{ var('run_date') }}')
-{% endif %}
+from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:officials)) officials

@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: NHL_DB_RAW
+  - name: SNOWFLAKE_RAW
     database: NHL_DB
     schema: RAW
 

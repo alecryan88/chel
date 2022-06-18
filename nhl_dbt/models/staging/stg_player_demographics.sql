@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        incremental_strategy='delete+insert'
-    )
-}}
-
 Select 
     partition_date,
     JSON_EXTRACT:gameData:game:pk::string as game_id,
@@ -18,11 +11,8 @@ Select
     (trim(split_part(player.value:height::string, '''', 1))::int * 12) + trim(split_part(split_part(player.value:height::string, '''', 2)::string, '"', 1))::int as height_inches,
     player.value:nationality::string as nationality,
     player.value:shootsCatches::string as handedness,
-    player.value:weight::int as weight
+    player.value:weight::int as weight,
+    '{{ run_started_at }}' as last_updated_dbt
         
 
-from {{source('NHL_DB_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:players)) player
-
-{% if is_incremental() %}
-where partition_date = date('{{ var('run_date') }}')
-{% endif %}
+from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:players)) player

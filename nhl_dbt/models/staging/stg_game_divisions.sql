@@ -1,11 +1,3 @@
-{{
-    config(
-        materialized='incremental',
-        incremental_strategy='delete+insert'
-    )
-}}
-
--- Comment for CI test
 select 
     partition_date,
     JSON_EXTRACT:gameData:game:pk::string as game_id,
@@ -14,8 +6,4 @@ select
     teams.value:id::int as team_id,
     '{{ run_started_at }}' as last_updated_dbt
    
-from {{source('NHL_DB_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:teams)) teams
-
-{% if is_incremental() %}
-where partition_date = date('{{ var('run_date') }}')
-{% endif %}
+from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:teams)) teams
