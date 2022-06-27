@@ -58,8 +58,4 @@ on t.team_id = div.team_id  and t.game_id = div.game_id
 left join {{ref('stg_game_conferences')}} conf 
 on div.division_id = conf.division_id  and div.game_id = conf.game_id
 
-{% if is_incremental() %}
-where d.partition_date = date('{{ var('run_date') }}')
-{% endif %}
-
 {{ dbt_utils.group_by(n=16) }}

@@ -50,8 +50,4 @@ Select
           
 from {{ref( 'game_player_stats' )}}
 
-{% if is_incremental() %}
-where partition_date = date('{{ var('run_date') }}')
-{% endif %}
-
 {{ dbt_utils.group_by(n=10) }}
