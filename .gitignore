@@ -5,5 +5,4 @@ history/
 storage/
 schedules/
 .logs_queue
-logs
 *.env
