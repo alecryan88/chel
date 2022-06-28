@@ -1,4 +1,4 @@
 dbt_modules/
 logs/
-target
+./target/*
 dev.env
