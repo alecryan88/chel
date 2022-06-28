@@ -32,27 +32,3 @@ def upload_dbt_artifacts(context, game_finals):
     for i in dbt_artifacts:
         object_name = i.replace(f"{dbt_dir}/target/","")
         context.resources.s3.upload_file(i, bucket_name, object_name)
-
-
-@asset(
-    required_resource_keys={'s3', 'dbt'},
-    compute_kind='python',
-
-)
-def download_dbt_artifacts(context, game_finals):
-    '''
-    Load artifacts to s3.
-    '''
-
-    bucket_name = "dbt-docs-chel"
-    
-    #dbt Artifacts
-    catalog = f"{dbt_dir}/target/catalog.json"
-    index = f"{dbt_dir}/target/index.html"
-    manifest = f"{dbt_dir}/target/manifest.json"
-
-    dbt_artifacts = [catalog, manifest, index]
-
-    for i in dbt_artifacts:
-        object_name = i.replace(f"{dbt_dir}/target/","")
-        context.resources.s3.upload_file(i, bucket_name, object_name)
