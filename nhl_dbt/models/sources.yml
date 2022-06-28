@@ -5,7 +5,6 @@ sources:
     database: NHL_DB
     schema: RAW
 
-
     freshness:
       warn_after: {count: 2, period: day}
     

@@ -2,18 +2,14 @@ from dagster import AssetGroup, DailyPartitionsDefinition, load_assets_from_pack
 from nhl_dagster.resources.resources import * 
 from nhl_dagster.assets.nhl_to_s3 import *
 from nhl_dagster.assets.s3_to_snowflake import *
-from dagster_dbt.asset_defs import load_assets_from_dbt_project
-import os
-
-dbt_dir = os.environ['DBT_DIR']
-
-dbt_assets = load_assets_from_dbt_project(project_dir=dbt_dir, profiles_dir=dbt_dir)
+from nhl_dagster.assets.dbt_assets import *
 
 assets = [
     extract_game_ids_to_list,
     load_game_data_to_s3,
     RAW_NHL_GAME_DATA,
-    *dbt_assets
+    *dbt_assets,
+    upload_dbt_artifacts
 ]
 
 asset_group = AssetGroup(

@@ -1,51 +1,47 @@
 from dagster_dbt.asset_defs import load_assets_from_dbt_project
-
-dbt_assets = load_assets_from_dbt_project(
-    project_dir = os.environ['DBT_DIR'], 
-    profiles_dir = os.environ['DBT_DIR']
-    )
-
-asset(
-    required_resource_keys={'s3'},
-    compute_kind='python',
-    group_name = 'nhl_game_data_s3'
-)
-def download_prod_manifest(context, dbt_assets):
-    '''
-    Load game_data to s3 in JSON format.
-    '''
-
-    for game_id in extract_game_ids_to_list:
-        r = requests.get(f'https://statsapi.web.nhl.com/api/v1/game/{game_id}/feed/live')
-    
-        #Store JSON respose
-        json = io.BytesIO(r.content)
-
-        context.resources.s3.put_object(
-            Body=json,
-            Bucket='nhl-analytics',
-            Key=f'nhl-game-data/partition_date={partition_key}/{game_id}.json'
-        )
-
+from dagster import asset
 import boto3
 import os
- 
-s3_client = boto3.client('s3')
 
-filename = 'manifest.json'
-location = 'nhl_dbt/ci_manifest/manifest.json'
+dbt_dir = os.environ['DBT_DIR']
 
-bucket = 'nhl-prod-dbt-manifest'
-
-print(f"Loading file to {location}.")
-
-s3_client.download_file(
-    Bucket=bucket, 
-    Key=filename, 
-    Filename=location
+dbt_assets = load_assets_from_dbt_project(
+    project_dir = dbt_dir, 
+    profiles_dir = dbt_dir
     )
 
-print(f"Successly loaded file to {location}.")
 
+def upload_file_using_client():
+    """
+    Uploads file to S3 bucket using S3 client object
+    :return: None
+    """
+    s3 = boto3.client("s3")
+    bucket_name = "binary-guy-frompython-1"
+    object_name = "sample1.txt"
+    file_name = os.path.join(pathlib.Path(__file__).parent.resolve(), "sample_file.txt")
+    response = s3.upload_file(file_name, bucket_name, object_name)
+    pprint(response)  # prints Non
 
-        
+@asset(
+    required_resource_keys={'s3', 'dbt'},
+    compute_kind='python',
+
+)
+def upload_dbt_artifacts(context, game_finals):
+    '''
+    Load artifacts to s3.
+    '''
+
+    bucket_name = "dbt-docs-chel"
+    
+    #dbt Artifacts
+    catalog = f"{dbt_dir}/target/catalog.json"
+    index = f"{dbt_dir}/target/index.html"
+    manifest = f"{dbt_dir}/target/manifest.json"
+
+    dbt_artifacts = [catalog, manifest, index]
+
+    for i in dbt_artifacts:
+        object_name = i.replace(f"{dbt_dir}/target/","")
+        context.resources.s3.upload_file(i, bucket_name, object_name)
