@@ -9,6 +9,7 @@ assets = [
     load_game_data_to_s3,
     RAW_NHL_GAME_DATA,
     *dbt_assets,
+    generate_dbt_artifacts,
     upload_dbt_artifacts
 ]
 

@@ -20,9 +20,9 @@ dagster-docker==0.15
 dagster-pandas==0.15
 dagster-postgres==0.15
 dagster-snowflake==0.15
-dbt-core==1.1.0
+dbt-core==1.1.1
 dbt-extractor==0.4.1
-dbt-snowflake==1.1.0
+dbt-snowflake==1.1.
 docker==5.0.3
 docker-image-py==0.1.12
 docstring-parser==0.14.1

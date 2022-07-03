@@ -2,7 +2,7 @@ version: 2
 
 models:
 
-  - name: m_game_player_stats
+  - name: game_player_stats
     description: Summarizes player stats for each game.
     columns:
       - name: partition_date
@@ -119,7 +119,7 @@ models:
         description: '{{ doc("shootout_shots_faced") }}'
 
 
-  - name: m_game_finals
+  - name: game_finals
     description: Summarizes team stats for each game. This model can be used for following team standings throughout the season.
     columns:
       - name: partition_date

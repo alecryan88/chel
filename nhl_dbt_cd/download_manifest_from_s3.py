@@ -3,17 +3,21 @@ import os
  
 s3_client = boto3.client('s3')
 
-filename = 'manifest.json'
-location = 'nhl_dbt/ci_manifest/manifest.json'
+#Name of file in S3
+file_name = 'manifest.json'
 
-bucket = 'nhl-prod-dbt-manifest'
+#Where the file will be downloaded to
+object_name = 'nhl_dbt/ci_manifest/manifest.json'
 
-print(f"Loading file to {location}.")
+#Bucket where the file exists
+bucket = 'dbt-docs-chel'
+
+print(f"Loading file to {object_name}.")
 
 s3_client.download_file(
     Bucket=bucket, 
-    Key=filename, 
-    Filename=location
+    Key=file_name, 
+    Filename=object_name
     )
 
-print(f"Successly loaded file to {location}.")
+print(f"Successly loaded file to {object_name}.")

@@ -27,15 +27,19 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      #Downloads prod dbt manifest to compare agaist
+      - name : Create CI Manifest directory
+        run: |
+          mkdir nhl_dbt/ci_manifest
+
+      #Downloads prod dbt manifest to compare against
       - name: Fetch prod dbt_manifest
         run: python nhl_dbt_cd/download_manifest_from_s3.py
         env:
-          AWS_S3_BUCKET: nhl-prod-dbt-manifest
+          AWS_S3_BUCKET: dbt-docs-chel
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
-      #Compile generates new dbt manifest with app code 
+      #Compile generates new dbt manifest with app code in target folder
       - name: dbt compile - generate new manifest
         run: cd nhl_dbt && dbt compile --profiles-dir .
 

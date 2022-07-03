@@ -37,7 +37,7 @@ jobs:
       - name: Update dbt manifest in prod s3 bucket
         run: python3 nhl_dbt_cd/upload_manifest_to_s3.py --path nhl_dbt/target/manifest.json
         env:
-          AWS_S3_BUCKET: nhl-prod-dbt-manifest
+          AWS_S3_BUCKET: dbt-docs-chel
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
@@ -50,5 +50,5 @@ jobs:
          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
          SNOWFLAKE_DB: NHL_DB
 
-      - name: Execute dbt full-refresh of all models w/new
+      - name: Execute dbt full-refresh of all models w/new manifest
         run: cd nhl_dbt && dbt run --full-refresh --profiles-dir . --target prod
