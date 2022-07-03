@@ -17,6 +17,6 @@ with open(path) as file:
 
     s3.put_object(
     Body=json.dumps(manifest),
-    Bucket=os.environ['AWS_S3_BUCKET'],
+    Bucket=os.environ['DBT_DOCS_BUCKET'],
     Key='manifest.json'
     )

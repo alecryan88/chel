@@ -6,11 +6,11 @@ s3_client = boto3.client('s3')
 #Name of file in S3
 file_name = 'manifest.json'
 
-#Where the file will be downloaded to
+#dbt needs a manifest (in this case prod) to compare to
 object_name = 'nhl_dbt/ci_manifest/manifest.json'
 
 #Bucket where the file exists
-bucket = 'dbt-docs-chel'
+bucket = os.environ['DBT_DOCS_BUCKET']
 
 print(f"Loading file to {object_name}.")
 
