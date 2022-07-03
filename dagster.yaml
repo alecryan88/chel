@@ -25,7 +25,7 @@ run_launcher:
       - SNOWFLAKE_WAREHOUSE
       - DBT_DIR
       - RAW_DATA_BUCKET
-
+      - DBT_DOCS_BUCKET
     container_kwargs:
       volumes:
         - /Users/alecryan/Desktop/chel/nhl_dagster:/opt/dagster/app/nhl_dagster
