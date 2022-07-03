@@ -40,7 +40,7 @@ def upload_dbt_artifacts(context, generate_dbt_artifacts):
     Load artifacts to s3.
     '''
     
-    bucket_name = "dbt-docs-chel"
+    bucket_name = os.environ['DBT_DOCS_BUCKET']
     
     #dbt Artifacts
     catalog = f"{dbt_dir}/target/catalog.json"
