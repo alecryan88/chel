@@ -67,6 +67,16 @@ services:
     depends_on:
       - docker_example_user_code
 
+  docker_metabase:
+    container_name: 'docker_metabase'
+    image: metabase/metabase
+    restart: always
+    env_file:
+      - dev.env
+    ports:
+      # <Port exposed>:<Port running inside container>
+      - "3001:3000"
+
 networks:
   docker_example_network:
     driver: bridge
