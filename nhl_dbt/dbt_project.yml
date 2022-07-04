@@ -26,7 +26,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbt_nhl_analytics:
     +on_schema_change: "sync_all_columns"
-    prod:
+    marts:
+      game_stats:
+        +materialized: view
+    intermediate:
       +materialized: view
     staging:
       +materialized: view
