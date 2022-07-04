@@ -1,27 +1,27 @@
 version: "3.7"
 
 services:
-  docker_example_user_code:
+  nhl_elt_app_code:
     build:
       context: .
-      dockerfile: ./Dockerfile_user_code
-    container_name: docker_example_user_code
-    image: docker_example_user_code_image
+      dockerfile: ./Dockerfile_app_code
+    container_name: nhl_elt_app_code
+    image: nhl_elt_app_code_image
     restart: always
     env_file:
       - dev.env
     environment:
-      DAGSTER_CURRENT_IMAGE: "docker_example_user_code_image"
+      DAGSTER_CURRENT_IMAGE: "nhl_elt_app_code_image"
     volumes:
       - /Users/alecryan/Desktop/chel/nhl_dagster:/opt/dagster/app/nhl_dagster/ 
       - /Users/alecryan/Desktop/chel/nhl_dbt:/opt/dagster/app/nhl_dbt/ 
     networks:
-      - docker_example_network
+      - nhl_elt_network
 
   # This service runs dagit, which loads your user code from the user code container.
   # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagit will be put on
   # a queue and later dequeued and launched by dagster-daemon.
-  docker_example_dagit:
+  nhl_elt_dagit:
     build:
       context: .
       dockerfile: ./Dockerfile_dagster
@@ -33,7 +33,7 @@ services:
       - "3000"
       - -w
       - workspace.yaml
-    container_name: docker_example_dagit
+    container_name: nhl_elt_dagit
     expose:
       - "3000"
     ports:
@@ -43,29 +43,29 @@ services:
     volumes: # Make docker client accessible so we can terminate containers from dagit
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - docker_example_network
+      - nhl_elt_network
     depends_on:
-      - docker_example_user_code
+      - nhl_elt_app_code
 
   # This service runs the dagster-daemon process, which is responsible for taking runs
   # off of the queue and launching them, as well as creating runs from schedules or sensors.
-  docker_example_daemon:
+  nhl_elt_daemon:
     build:
       context: .
       dockerfile: ./Dockerfile_dagster
     entrypoint:
       - dagster-daemon
       - run
-    container_name: docker_example_daemon
+    container_name: nhl_elt_daemon
     restart: on-failure
     env_file:
       - dev.env
     volumes: # Make docker client accessible so we can launch containers using host docker
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
-      - docker_example_network
+      - nhl_elt_network
     depends_on:
-      - docker_example_user_code
+      - nhl_elt_app_code
 
   docker_metabase:
     container_name: 'docker_metabase'
@@ -78,6 +78,6 @@ services:
       - "3001:3000"
 
 networks:
-  docker_example_network:
+  nhl_elt_network:
     driver: bridge
-    name: docker_example_network
+    name: nhl_elt_network
