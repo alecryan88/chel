@@ -48,6 +48,6 @@ Select
             else 0
         end points
           
-from {{ref( 'game_player_stats' )}}
+from {{ref('game_player_stats' )}}
 
 {{ dbt_utils.group_by(n=10) }}

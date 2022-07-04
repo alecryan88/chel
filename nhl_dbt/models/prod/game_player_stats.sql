@@ -43,7 +43,7 @@ Select
 
 from {{ref('stg_game_roster')}} d
 
-left join {{ref('stg_game_player_stats')}} g 
+left join {{ref('int_game_player_stats')}} g 
 on g.player_id = d.player_id and g.game_id = d.game_id 
 
 left join {{ref('stg_game_metadata')}} m
