@@ -4,7 +4,7 @@
 What things you need to install the software and how to install them.
 
 ## Architecture
-<img src="https://github.com/alecryan88/chel/blob/main/images/pipeline.png" width=100% height=70%>
+<img src="https://github.com/alecryan88/chel/blob/main/images/workflow.png" width=100% height=70%>
 
 
 ## 🚀 Deployment <a name = "deployment"></a>
