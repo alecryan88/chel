@@ -3,7 +3,7 @@
 ### Prerequisites
 What things you need to install the software and how to install them.
 
-## Archictecture
+## Architecture
 <img src="https://github.com/alecryan88/chel/blob/main/images/architecture.png" width=60% height=60%>
 
 
