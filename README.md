@@ -4,7 +4,7 @@
 What things you need to install the software and how to install them.
 
 ## Architecture
-<img src="https://github.com/alecryan88/chel/blob/main/images/architecture.png" width=80% height=60%>
+<img src="https://github.com/alecryan88/chel/blob/main/images/architecture.png" width=100% height=70%>
 
 
 ## 🚀 Deployment <a name = "deployment"></a>
