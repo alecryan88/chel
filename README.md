@@ -4,6 +4,7 @@
 What things you need to install the software and how to install them.
 
 ## Archictecture
+![Alt text here](images/architecture.png)
 
 
 ## 🚀 Deployment <a name = "deployment"></a>
