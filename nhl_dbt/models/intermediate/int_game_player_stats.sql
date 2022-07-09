@@ -35,4 +35,8 @@ Select
   on a.play_id = b.play_id
   and a.partition_date = b.partition_date
 
+  {% if is_incremental() %}
+  where a.partition_date = date('{{ var('run_date') }}')
+  {% endif %}
+
  {{ dbt_utils.group_by(n=8) }}

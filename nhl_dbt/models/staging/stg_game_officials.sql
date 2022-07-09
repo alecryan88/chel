@@ -9,3 +9,7 @@ Select
     '{{ run_started_at }}' as last_updated_dbt
     
 from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:officials)) officials
+
+{% if is_incremental() %}
+where partition_date = date('{{ var('run_date') }}')
+{% endif %}

@@ -20,6 +20,10 @@ Select
     
 from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:teams:away:players)) players
 
+{% if is_incremental() %}
+where partition_date = date('{{ var('run_date') }}')
+{% endif %}
+
 union
 
 Select 
@@ -43,3 +47,7 @@ Select
 
     
 from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:liveData:boxscore:teams:home:players)) players
+
+{% if is_incremental() %}
+where partition_date = date('{{ var('run_date') }}')
+{% endif %}

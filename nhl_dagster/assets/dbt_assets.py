@@ -1,14 +1,21 @@
 from dagster_dbt.asset_defs import load_assets_from_dbt_project
+from nhl_dagster.partitions.partitions import daily_partitions_def
 from dagster import asset
 import os, subprocess, boto3
 
 dbt_dir = os.environ['DBT_DIR']
 
+
+def partition_key_to_dbt_vars(partition_key):
+    return {"run_date": partition_key}
+
 dbt_assets = load_assets_from_dbt_project(
     project_dir = dbt_dir, 
     profiles_dir = dbt_dir,
-    )
+    partitions_def=daily_partitions_def,
+    partition_key_to_vars_fn=partition_key_to_dbt_vars,
 
+    )
 
 @asset(
     required_resource_keys={'s3', 'dbt'},

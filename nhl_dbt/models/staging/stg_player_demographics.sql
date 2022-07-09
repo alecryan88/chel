@@ -16,3 +16,7 @@ Select
         
 
 from {{source('SNOWFLAKE_RAW', 'RAW_NHL_GAME_DATA')}}, table(flatten(JSON_EXTRACT:gameData:players)) player
+
+{% if is_incremental() %}
+where partition_date = date('{{ var('run_date') }}')
+{% endif %}
