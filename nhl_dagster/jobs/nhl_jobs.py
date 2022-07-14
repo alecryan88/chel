@@ -1,4 +1,4 @@
-from dagster import AssetGroup, DailyPartitionsDefinition, load_assets_from_package_module
+from dagster import AssetGroup, DailyPartitionsDefinition
 from nhl_dagster.resources.resources import * 
 from nhl_dagster.assets.nhl_to_s3 import *
 from nhl_dagster.assets.s3_to_snowflake import *

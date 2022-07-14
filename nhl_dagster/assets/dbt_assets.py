@@ -1,26 +1,18 @@
 from dagster_dbt.asset_defs import load_assets_from_dbt_project
 from nhl_dagster.partitions.partitions import daily_partitions_def
-from dagster import asset
+from dagster import asset, AssetIn
 import os, subprocess, boto3
 
 dbt_dir = os.environ['DBT_DIR']
 
-
-def partition_key_to_dbt_vars(partition_key):
-    return {"run_date": partition_key}
-
 dbt_assets = load_assets_from_dbt_project(
     project_dir = dbt_dir, 
-    profiles_dir = dbt_dir,
-    partitions_def=daily_partitions_def,
-    partition_key_to_vars_fn=partition_key_to_dbt_vars,
-
+    profiles_dir = dbt_dir
     )
 
 @asset(
     required_resource_keys={'s3', 'dbt'},
-    compute_kind='python',
-
+    compute_kind='python'
 )
 def generate_dbt_artifacts(context, game_finals):
     '''
@@ -39,8 +31,7 @@ def generate_dbt_artifacts(context, game_finals):
 
 @asset(
     required_resource_keys={'s3', 'dbt'},
-    compute_kind='python',
-
+    compute_kind='python'
 )
 def upload_dbt_artifacts(context, generate_dbt_artifacts):
     '''

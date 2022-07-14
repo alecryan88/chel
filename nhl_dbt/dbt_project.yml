@@ -28,8 +28,8 @@ models:
     +on_schema_change: "sync_all_columns"
     marts:
       game_stats:
-        +materialized: incremental
+        +materialized: view
     intermediate:
-      +materialized: incremental
+      +materialized: view
     staging:
-      +materialized: incremental
+      +materialized: view
