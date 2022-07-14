@@ -5,16 +5,22 @@ import os, subprocess, boto3
 
 dbt_dir = os.environ['DBT_DIR']
 
+def partition_key_to_dbt_vars(partition_key):
+    return {"run_date": partition_key}
+
 dbt_assets = load_assets_from_dbt_project(
     project_dir = dbt_dir, 
-    profiles_dir = dbt_dir
+    profiles_dir = dbt_dir,
+    partitions_def=daily_partitions_def,
+    partition_key_to_vars_fn=partition_key_to_dbt_vars
     )
 
 @asset(
     required_resource_keys={'s3', 'dbt'},
-    compute_kind='python'
+    compute_kind='python',
+    non_argument_deps={"game_finals"}
 )
-def generate_dbt_artifacts(context, game_finals):
+def generate_dbt_artifacts(context):
     '''
     dbt generate command for refresh of dbt artifacts:
     - index.html
@@ -31,9 +37,10 @@ def generate_dbt_artifacts(context, game_finals):
 
 @asset(
     required_resource_keys={'s3', 'dbt'},
-    compute_kind='python'
+    compute_kind='python',
+    non_argument_deps={"generate_dbt_artifacts"}
 )
-def upload_dbt_artifacts(context, generate_dbt_artifacts):
+def upload_dbt_artifacts(context):
     '''
     Load artifacts to s3.
     '''
