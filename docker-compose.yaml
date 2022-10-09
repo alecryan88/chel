@@ -25,14 +25,7 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile_dagster
-    entrypoint:
-      - dagit
-      - -h
-      - "0.0.0.0"
-      - -p
-      - "3000"
-      - -w
-      - workspace.yaml
+    command: "dagit -h 0.0.0.0 -p 3000 -w workspace.yaml"
     container_name: nhl_elt_dagit
     expose:
       - "3000"
