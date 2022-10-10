@@ -1,76 +1,95 @@
 version: "3.7"
 
 services:
-  nhl_elt_app_code:
-    build:
-      context: .
-      dockerfile: ./Dockerfile_app_code
-    container_name: nhl_elt_app_code
-    image: nhl_elt_app_code_image
-    restart: always
-    env_file:
-      - dev.env
-    environment:
-      DAGSTER_CURRENT_IMAGE: "nhl_elt_app_code_image"
-    volumes:
-      - /Users/alecryan/Desktop/chel/nhl_dagster:/opt/dagster/app/nhl_dagster/ 
-      - /Users/alecryan/Desktop/chel/nhl_dbt:/opt/dagster/app/nhl_dbt/ 
-    networks:
-      - nhl_elt_network
 
   # This service runs dagit, which loads your user code from the user code container.
   # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagit will be put on
   # a queue and later dequeued and launched by dagster-daemon.
-  nhl_elt_dagit:
+  dagit:
+    platform: linux/amd64
     build:
       context: .
-      dockerfile: ./Dockerfile_dagster
+      dockerfile: ./Dockerfile
+      target: dagit
+    image: "$REGISTRY_URL/nhl/dagit"
+    container_name: dagit
     command: "dagit -h 0.0.0.0 -p 3000 -w workspace.yaml"
-    container_name: nhl_elt_dagit
-    expose:
-      - "3000"
     ports:
       - "3000:3000"
     env_file:
       - dev.env
-    volumes: # Make docker client accessible so we can terminate containers from dagit
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - nhl_elt_network
     depends_on:
-      - nhl_elt_app_code
+      - user_code
+    x-aws-role:
+      Statement:
+        - Effect: "Allow"
+          Action:
+            - "ecs:DescribeTasks"
+            - "ecs:StopTask"
+          Resource:
+            - "*"
+        - Effect: "Allow"
+          Action:
+            - "iam:PassRole"
+          Resource:
+            - "*"
+          Condition:
+            StringLike:
+              iam:PassedToService: "ecs-tasks.amazonaws.com"
+              
 
   # This service runs the dagster-daemon process, which is responsible for taking runs
   # off of the queue and launching them, as well as creating runs from schedules or sensors.
-  nhl_elt_daemon:
+  daemon:
+    platform: linux/amd64
     build:
       context: .
-      dockerfile: ./Dockerfile_dagster
-    entrypoint:
-      - dagster-daemon
-      - run
-    container_name: nhl_elt_daemon
-    restart: on-failure
+      dockerfile: ./Dockerfile
+      target: dagster
+    image:  "$REGISTRY_URL/nhl/daemon"
+    command: "dagster-daemon run"
+    container_name: daemon
     env_file:
       - dev.env
-    volumes: # Make docker client accessible so we can launch containers using host docker
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - nhl_elt_network
     depends_on:
-      - nhl_elt_app_code
+      - user_code
+    x-aws-role:
+      Statement:
+        - Effect: "Allow"
+          Action:
+            - "ec2:DescribeNetworkInterfaces"
+            - "ecs:DescribeTaskDefinition"
+            - "ecs:DescribeTasks"
+            - "ecs:ListAccountSettings"
+            - "ecs:RegisterTaskDefinition"
+            - "ecs:RunTask"
+            - "ecs:TagResource"
+            - "secretsmanager:DescribeSecret"
+            - "secretsmanager:ListSecrets"
+            - "secretsmanager:GetSecretValue"
+            - "s3:PutObject"
+          Resource:
+            - "*"
+        - Effect: "Allow"
+          Action:
+            - "iam:PassRole"
+          Resource:
+            - "*"
+          Condition:
+            StringLike:
+              iam:PassedToService: "ecs-tasks.amazonaws.com"
 
-  docker_metabase:
-    container_name: 'docker_metabase'
-    image: metabase/metabase
-    restart: always
+
+  user_code:
+    platform: linux/amd64
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: user_code
+    image: "$REGISTRY_URL/nhl/user_code"
+    container_name: user_code
+    command: "dagster api grpc -h 0.0.0.0 -p 4000 -f nhl_dagster/repo.py"  
     env_file:
       - dev.env
-    ports:
-      # <Port exposed>:<Port running inside container>
-      - "3001:3000"
-
-networks:
-  nhl_elt_network:
-    driver: bridge
-    name: nhl_elt_network
+    environment:
+      DAGSTER_CURRENT_IMAGE: "$REGISTRY_URL/nhl/user_code"
