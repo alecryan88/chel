@@ -30,7 +30,7 @@ def generate_dbt_artifacts(context):
 
     os.chdir(dbt_dir)
     
-    docs_generate_cmd = "dbt docs generate --profiles-dir . --target prod --no-compile"
+    docs_generate_cmd = f"dbt docs generate --profiles-dir {dbt_dir} --target prod --no-compile"
 
     subprocess.run(docs_generate_cmd, shell =True) 
 
@@ -44,7 +44,7 @@ def upload_dbt_artifacts(context):
     '''
     Load artifacts to s3.
     '''
-    
+
     bucket_name = os.environ['DBT_DOCS_BUCKET']
     
     #dbt Artifacts

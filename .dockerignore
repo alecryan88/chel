@@ -4,4 +4,3 @@ venv
 .logs_queue
 storage/
 logs/
-nhl_dbt/target/

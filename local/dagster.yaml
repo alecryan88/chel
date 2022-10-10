@@ -7,11 +7,9 @@ run_coordinator:
   class: QueuedRunCoordinator
 
 run_launcher:
-  module: dagster_aws.ecs
-  class: EcsRunLauncher
+  module: dagster_docker
+  class: DockerRunLauncher
   config:
-    include_sidecars: true
-    secrets_tag: ""
     env_vars:
       - DAGSTER_PG_USERNAME
       - DAGSTER_PG_PASSWORD
@@ -29,6 +27,7 @@ run_launcher:
       - DBT_DIR
       - RAW_DATA_BUCKET
       - DBT_DOCS_BUCKET
+    network: nhl_network
     
 run_storage:
   module: dagster_postgres.run_storage
