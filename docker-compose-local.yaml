@@ -10,6 +10,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
       target: dagit
+      args:
+        DAGSTER_CONFIG: "local"
     image: nhl_dagit
     command: "dagit -h 0.0.0.0 -p 3000 -w workspace.yaml"
     container_name: dagit
@@ -18,7 +20,7 @@ services:
     ports:
       - "3000:3000"
     env_file:
-      - chel/dev.env
+      - dev.env
     volumes: # Make docker client accessible so we can terminate containers from dagit
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
@@ -34,10 +36,12 @@ services:
       context: .
       dockerfile: ./Dockerfile
       target: dagster
+      args:
+        DAGSTER_CONFIG: "local"
     command: "dagster-daemon run"
     container_name: nhl_daemon
     env_file:
-      - chel/dev.env
+      - dev.env
     volumes: # Make docker client accessible so we can launch containers using host docker
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
@@ -50,11 +54,13 @@ services:
       context: .
       dockerfile: ./Dockerfile
       target: user_code
+      args:
+        DAGSTER_CONFIG: "local"
     container_name: user_code
     image: nhl_user_code
     command: "dagster api grpc -h 0.0.0.0 -p 4000 -f nhl_dagster/repo.py"  
     env_file:
-      - chel/dev.env
+      - dev.env
     environment:
       DAGSTER_CURRENT_IMAGE: "nhl_user_code"
     networks:

@@ -11,6 +11,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
       target: dagit
+      args:
+        DAGSTER_CONFIG: "ecs"
     image: "$REGISTRY_URL/nhl/dagit"
     container_name: dagit
     command: "dagit -h 0.0.0.0 -p 3000 -w workspace.yaml"
@@ -46,6 +48,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
       target: dagster
+      args:
+        DAGSTER_CONFIG: "ecs"
     image:  "$REGISTRY_URL/nhl/daemon"
     command: "dagster-daemon run"
     container_name: daemon
@@ -86,6 +90,8 @@ services:
       context: .
       dockerfile: ./Dockerfile
       target: user_code
+      args:
+        DAGSTER_CONFIG: "ecs"
     image: "$REGISTRY_URL/nhl/user_code"
     container_name: user_code
     command: "dagster api grpc -h 0.0.0.0 -p 4000 -f nhl_dagster/repo.py"  

@@ -6,7 +6,9 @@ RUN apt-get install git -y
 ENV DAGSTER_HOME=/opt/dagster/dagster_home
 RUN mkdir -p $DAGSTER_HOME
 
-COPY dagster.yaml  $DAGSTER_HOME
+ARG DAGSTER_CONFIG
+
+COPY dagster_configs/$DAGSTER_CONFIG/dagster.yaml  $DAGSTER_HOME
 COPY workspace.yaml $DAGSTER_HOME
 COPY nhl_dbt $DAGSTER_HOME/nhl_dbt/
 COPY nhl_dagster $DAGSTER_HOME/nhl_dagster/
