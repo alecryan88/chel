@@ -11,7 +11,7 @@ run_launcher:
   class: EcsRunLauncher
   config:
     include_sidecars: true
-    secrets_tag: ""
+    secrets_tag: "nhl"
     env_vars:
       - DAGSTER_PG_USERNAME
       - DAGSTER_PG_PASSWORD

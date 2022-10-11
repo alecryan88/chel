@@ -3,7 +3,7 @@ from nhl_dagster.partitions.partitions import daily_partitions_def
 from dagster import asset, AssetIn
 import os, subprocess, boto3
 
-dbt_dir = os.environ['DBT_DIR']
+dbt_dir = 'nhl_dbt'
 
 def partition_key_to_dbt_vars(partition_key):
     return {"run_date": partition_key}
