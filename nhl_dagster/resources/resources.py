@@ -1,6 +1,7 @@
 from dagster_aws.s3.resources import s3_resource
 from dagster_dbt import dbt_cli_resource
 from dagster_snowflake import snowflake_resource
+from dagster_aws.secretsmanager import secretsmanager_secrets_resource
 import os
 
 dbt_dir = os.environ['DAGSTER_HOME'] + '/nhl_dbt'

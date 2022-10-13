@@ -1,7 +1,6 @@
 version: "3.7"
 
 services:
-
   # This service runs dagit, which loads your user code from the user code container.
   # Since our instance uses the QueuedRunCoordinator, any runs submitted from dagit will be put on
   # a queue and later dequeued and launched by dagster-daemon.
@@ -15,11 +14,11 @@ services:
         DAGSTER_CONFIG: "ecs"
     image: "$REGISTRY_URL/nhl/dagit"
     container_name: dagit
+    env_file:
+      - dev.env
     command: "dagit -h 0.0.0.0 -p 3000 -w workspace.yaml"
     ports:
       - "3000:3000"
-    env_file:
-      - dev.env
     depends_on:
       - user_code
     x-aws-role:
@@ -94,7 +93,7 @@ services:
         DAGSTER_CONFIG: "ecs"
     image: "$REGISTRY_URL/nhl/user_code"
     container_name: user_code
-    command: "dagster api grpc -h 0.0.0.0 -p 4000 -f nhl_dagster/repo.py"  
+    command: "dagster api grpc -h 0.0.0.0 -p 4000 -f nhl_dagster/repo.py"
     env_file:
       - dev.env
     environment:

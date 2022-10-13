@@ -12,23 +12,6 @@ run_launcher:
   config:
     include_sidecars: true
     secrets_tag: "nhl"
-    env_vars:
-      - DAGSTER_PG_USERNAME
-      - DAGSTER_PG_PASSWORD
-      - DAGSTER_PG_HOST
-      - DAGSTER_PG_DB
-      - AWS_ACCESS_KEY_ID
-      - AWS_SECRET_ACCESS_KEY
-      - AWS_REGION
-      - SNOWFLAKE_ACCOUNT
-      - SNOWFLAKE_USER
-      - SNOWFLAKE_PASSWORD
-      - SNOWFLAKE_ROLE
-      - SNOWFLAKE_DATABASE
-      - SNOWFLAKE_WAREHOUSE
-      - DBT_DIR
-      - RAW_DATA_BUCKET
-      - DBT_DOCS_BUCKET
     
 run_storage:
   module: dagster_postgres.run_storage

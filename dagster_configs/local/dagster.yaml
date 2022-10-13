@@ -24,7 +24,6 @@ run_launcher:
       - SNOWFLAKE_ROLE
       - SNOWFLAKE_DATABASE
       - SNOWFLAKE_WAREHOUSE
-      - DBT_DIR
       - RAW_DATA_BUCKET
       - DBT_DOCS_BUCKET
     network: nhl_network

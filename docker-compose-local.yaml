@@ -39,7 +39,7 @@ services:
       args:
         DAGSTER_CONFIG: "local"
     command: "dagster-daemon run"
-    container_name: nhl_daemon
+    container_name: daemon
     env_file:
       - dev.env
     volumes: # Make docker client accessible so we can launch containers using host docker
@@ -63,6 +63,9 @@ services:
       - dev.env
     environment:
       DAGSTER_CURRENT_IMAGE: "nhl_user_code"
+    volumes:
+      - ./nhl_dagster:/opt/dagster/dagster_home/nhl_dagster/ 
+      - ./nhl_dbt:/opt/dagster/dagster_home/nhl_dbt/ 
     networks:
       - nhl_network
 
