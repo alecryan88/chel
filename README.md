@@ -26,8 +26,6 @@ The motivation for this project is primarily to gain experience using Dagster, d
 4. [Configure IAM permissions](https://docs.docker.com/cloud/ecs-integration/#requirements)
 5. [Create a Snowflake account](https://signup.snowflake.com/)
 6. [Create a Docker ECS context](https://docs.docker.com/cloud/ecs-integration/#create-aws-context):
-
-### Setup 
   ```sh
 docker context create ecs nhl
   ```
@@ -44,7 +42,7 @@ docker context create ecs nhl
   aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $REGISTRY_URL
   ```
 
-#### Build and Push Images
+### Build and Push Images
 
 The docker-compose.yaml builds all of it's images from the multi-stage Dockerfile. To expose these images to ECS, we first need to build them and then push them to the ECR Repositories we created. 
 
