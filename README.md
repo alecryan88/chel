@@ -25,27 +25,13 @@ What things you need to install the software and how to install them.
 ## Architecture
 <img src="https://github.com/alecryan88/chel/blob/main/images/workflow.png" width=100% height=70%>
 
-
-## 🚀 Deployment <a name = "deployment"></a>
-Add additional notes about how to deploy this on a live system.
-
 ## ⛏️ Built Using <a name = "built_using"></a>
 - [Dagster](https://dagster.io/) - Orchestration
 - [dbt](https://www.getdbt.com/) - Transformation & Documentation
 - [Snowflake](https://www.snowflake.com/) - Data Warehouse
 - [AWS S3](https://aws.amazon.com/) - Storage
 - [GitHub Actions](https://docs.github.com/en/actions) - CI/CD
-- [Metabase](https://www.metabase.com/) - Data Viz
 
-## Contents
-
-| Name                     | Description                                                                       |
-| ------------------------ | --------------------------------------------------------------------------------- |
-| `README.md`              | A description and guide for this code repository                                  |
-| `setup.py`               | A build script with Python package dependencies for this code repository          |
-| `workspace.yaml`         | A file that specifies the location of the user code for Dagit and the Dagster CLI |
-| `nhl_elt/`               | A Python directory that contains code for your Dagster repository                 |
-| `nhl_elt_tests/`         | A Python directory that contains tests for `nhl_elt`                              |
 
 
 ## Prerequisites
@@ -58,16 +44,17 @@ Add additional notes about how to deploy this on a live system.
 
 ## Setup
   ```sh
-  docker context create ecs dagster-ecs
+  docker context create ecs nhl
   ```
 6. [Create ECR Repositories](https://docs.aws.amazon.com/cli/latest/reference/ecr/create-repository.html) for our images:
   ```sh
-  aws ecr create-repository --repository-name deploy_ecs/dagit
-  aws ecr create-repository --repository-name deploy_ecs/daemon
-  aws ecr create-repository --repository-name deploy_ecs/user_code
+  aws ecr create-repository --repository-name nhl/dagit
+  aws ecr create-repository --repository-name nhl/daemon
+  aws ecr create-repository --repository-name nhl/user_code
   ```
 7. [Log in to your ECR Registry](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html) (ensure that the $AWS_REGION environment variable is set to your registry's AWS region):
   ```sh
+  export AWS_REGION=us-east-1
   export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --output text | cut -f1)
   export REGISTRY_URL=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
   aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $REGISTRY_URL
@@ -83,5 +70,5 @@ Our docker-compose.yaml builds all of its images from local multi-stage Dockerfi
 ## Deploying Dagster
 
 ```sh
-docker --context dagster-ecs compose --project-name dagster up
+docker --context nhl compose --project-name nhl-dagster up
 ```
