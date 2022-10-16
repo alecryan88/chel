@@ -18,7 +18,7 @@ The motivation for this project is primarily to gain experience using Dagster, d
 <img src="https://github.com/alecryan88/chel/blob/main/images/workflow.png" width=100% height=70%>
 
 
-## Prerequisites
+## Deploying With ECS
 
 1. [Install Docker](https://docs.docker.com/cloud/ecs-integration/#prerequisites)
 2. [Create an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
@@ -26,7 +26,7 @@ The motivation for this project is primarily to gain experience using Dagster, d
 4. [Configure IAM permissions](https://docs.docker.com/cloud/ecs-integration/#requirements)
 5. [Create a Docker ECS context](https://docs.docker.com/cloud/ecs-integration/#create-aws-context):
 
-## Setup
+## Setup 
   ```sh
   docker context create ecs nhl
   ```
@@ -46,13 +46,25 @@ The motivation for this project is primarily to gain experience using Dagster, d
 
 ## Build and Push Images
 
-Our docker-compose.yaml builds all of its images from local multi-stage Dockerfile. To expose these images to ECS, we first need to build them and then push them to the ECR Repositories we created:
+The docker-compose.yaml builds all of its images from the multi-stage Dockerfile. To expose these images to ECS, we first need to build them and then push them to the ECR Repositories we created. 
 
 1. `docker compose build`
 2. `docker compose push`
 
-## Deploying Dagster
+
+## Deploying Dagster on ECS 
 
 ```sh
 docker --context nhl compose --project-name nhl-dagster up
 ```
+
+## Deploying Locally 
+1. [Install Docker](https://docs.docker.com/cloud/ecs-integration/#prerequisites)
+
+## Build Images
+
+```sh
+  docker compose -f docker-compose-local.yaml build 
+  ```
+
+## Deploying Daster on ECS 
