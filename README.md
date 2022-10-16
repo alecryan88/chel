@@ -24,7 +24,8 @@ The motivation for this project is primarily to gain experience using Dagster, d
 2. [Create an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
 3. [Install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
 4. [Configure IAM permissions](https://docs.docker.com/cloud/ecs-integration/#requirements)
-5. [Create a Docker ECS context](https://docs.docker.com/cloud/ecs-integration/#create-aws-context):
+5. [Create a Snowflake Account](https://signup.snowflake.com/)
+6. [Create a Docker ECS context](https://docs.docker.com/cloud/ecs-integration/#create-aws-context):
 
 ### Setup 
   ```sh
@@ -59,6 +60,7 @@ docker --context nhl compose --project-name nhl-dagster up
 
 ## Running Application Locally 
 1. [Install Docker](https://docs.docker.com/cloud/ecs-integration/#prerequisites)
+2. [Create a Snowflake Account](https://signup.snowflake.com/)
 
 ### Build Images
 
