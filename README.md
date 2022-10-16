@@ -17,6 +17,42 @@ The motivation for this project is primarily to gain experience using Dagster, d
 ## Architecture
 <img src="https://github.com/alecryan88/chel/blob/main/images/workflow.png" width=100% height=70%>
 
+## Setup
+There is some initial setup required regardless of the method of deployment: 
+1. Create Snowlake Warehouse
+2. Create S3 bucket
+3. Create Postgres DB 
+4. Add the variables to the dev.env file that will be persisted into the containers: 
+
+First create the file: 
+```sh
+touch dev.env
+```
+You will then need to add the following variables to run the application in either ECS or locally: 
+
+```sh
+DAGSTER_PG_USERNAME=
+DAGSTER_PG_PASSWORD=
+DAGSTER_PG_DB=
+DAGSTER_PG_HOST=
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_REGION=us-east-1
+
+RAW_DATA_BUCKET=
+DBT_DOCS_BUCKET=
+
+SNOWFLAKE_ACCOUNT=
+SNOWFLAKE_USER=
+SNOWFLAKE_PASSWORD=
+SNOWFLAKE_WAREHOUSE=
+SNOWFLAKE_DATABASE=
+SNOWFLAKE_ROLE=
+```
+
+
+
 
 ## Running Application in ECS
 
