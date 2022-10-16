@@ -7,12 +7,12 @@ An end-to-end data application to ingest NHL game data.
 The National Hockey League (NHL) provides an open API for requesting game statistics.
 
 In this project, the game data is collected via the NHL Open API and staged in an Amazon S3 bucket. The data is then copied from the S3 bucket into Snowflake where it is transformed using dbt. The pipeline is orchestrated by Dagster running in Docker containers. There are two ways to run the pipeline: 
-- Locally using docker containers
-- In the cloud, using AWS Elastic Container Service (ECS) . 
+- Locally in docker containers.
+- In the cloud, using AWS Elastic Container Service (ECS).
 
 ## Motivation
 
-The motivation for this project is primarily to gain experience using Apache Airflow, DBT & Snowflake. A secondary goal of the project is to showcase SQL and Tableau proficiency. 
+The motivation for this project is primarily to gain experience using Dagster, dbt, AWS & Snowflake. A secondary goal of the project is to showcase SQL and Tableau proficiency. 
 
 
 ## Architecture
