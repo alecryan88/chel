@@ -14,24 +14,8 @@ In this project, the game data is collected via the NHL Open API and staged in a
 
 The motivation for this project is primarily to gain experience using Dagster, dbt, AWS & Snowflake. A secondary goal of the project is to showcase SQL and Tableau proficiency. 
 
-
-## Architecture
-
-## 🧐 About <a name = "about"></a>
-
-### Prerequisites
-What things you need to install the software and how to install them.
-
 ## Architecture
 <img src="https://github.com/alecryan88/chel/blob/main/images/workflow.png" width=100% height=70%>
-
-## ⛏️ Built Using <a name = "built_using"></a>
-- [Dagster](https://dagster.io/) - Orchestration
-- [dbt](https://www.getdbt.com/) - Transformation & Documentation
-- [Snowflake](https://www.snowflake.com/) - Data Warehouse
-- [AWS S3](https://aws.amazon.com/) - Storage
-- [GitHub Actions](https://docs.github.com/en/actions) - CI/CD
-
 
 
 ## Prerequisites
