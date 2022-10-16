@@ -51,7 +51,7 @@ The docker-compose.yaml builds all of it's images from the multi-stage Dockerfil
 2. `docker compose push`
 
 
-## Deploying to ECS
+## Deploying Application 
 
 ```sh
 docker --context nhl compose --project-name nhl-dagster up
@@ -62,8 +62,13 @@ docker --context nhl compose --project-name nhl-dagster up
 
 ### Build Images
 
+For running the application locally, we need to specify the compose file being used with the ```-f``` command. This tells docker to build the images with a specific compose file. For the local implementation, we'll use the docker-compose file below: 
 ```sh
   docker compose -f docker-compose-local.yaml build 
   ```
 
-## Deploying Daster on ECS 
+### Deploying Application 
+Once the images are built, to deploy the application locally we can simply run: 
+```sh
+docker compose -f docker-compose-local.yaml up
+```
