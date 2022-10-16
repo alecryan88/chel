@@ -27,7 +27,7 @@ The motivation for this project is primarily to gain experience using Dagster, d
 5. [Create a Snowflake account](https://signup.snowflake.com/)
 6. [Create a Docker ECS context](https://docs.docker.com/cloud/ecs-integration/#create-aws-context):
 
-### Setup 
+#### Setup 
   ```sh
 docker context create ecs nhl
   ```
@@ -44,7 +44,7 @@ docker context create ecs nhl
   aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $REGISTRY_URL
   ```
 
-### Build and Push Images
+#### Build and Push Images
 
 The docker-compose.yaml builds all of it's images from the multi-stage Dockerfile. To expose these images to ECS, we first need to build them and then push them to the ECR Repositories we created. 
 
@@ -52,7 +52,7 @@ The docker-compose.yaml builds all of it's images from the multi-stage Dockerfil
 2. `docker compose push`
 
 
-## Deploying Application 
+#### Deploying Application 
 
 ```sh
 docker --context nhl compose --project-name nhl-dagster up
@@ -62,14 +62,14 @@ docker --context nhl compose --project-name nhl-dagster up
 1. [Install Docker](https://docs.docker.com/cloud/ecs-integration/#prerequisites)
 2. [Create a Snowflake account](https://signup.snowflake.com/)
 
-### Build Images
+#### Build Images
 
 For running the application locally, we need to specify the compose file being used with the ```-f``` command. This tells docker to build the images with a specific compose file. For the local implementation, we'll use the docker-compose file below: 
 ```sh
 docker compose -f docker-compose-local.yaml build 
 ```
 
-### Deploying Application 
+#### Deploying Application 
 Once the images are built, to deploy the application locally we can simply run: 
 ```sh
 docker compose -f docker-compose-local.yaml up
