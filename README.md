@@ -31,6 +31,8 @@ touch dev.env
 You will then need to add the following variables to run the application in either ECS or locally: 
 
 ```sh
+#dev.env
+
 DAGSTER_PG_USERNAME=
 DAGSTER_PG_PASSWORD=
 DAGSTER_PG_DB=
