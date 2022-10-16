@@ -28,7 +28,7 @@ The motivation for this project is primarily to gain experience using Dagster, d
 
 ### Setup 
   ```sh
-  docker context create ecs nhl
+docker context create ecs nhl
   ```
 6. [Create ECR Repositories](https://docs.aws.amazon.com/cli/latest/reference/ecr/create-repository.html) for the images:
   ```sh
@@ -64,8 +64,8 @@ docker --context nhl compose --project-name nhl-dagster up
 
 For running the application locally, we need to specify the compose file being used with the ```-f``` command. This tells docker to build the images with a specific compose file. For the local implementation, we'll use the docker-compose file below: 
 ```sh
-  docker compose -f docker-compose-local.yaml build 
-  ```
+docker compose -f docker-compose-local.yaml build 
+```
 
 ### Deploying Application 
 Once the images are built, to deploy the application locally we can simply run: 
