@@ -21,22 +21,15 @@ The motivation for this project is primarily to gain experience using Dagster, d
 There is some initial setup required regardless of the method of deployment: 
 1. Clone the repository to your local machine: 
 ```sh
-git clone 
+git clone https://github.com/alecryan88/chel.git
 ```
-1. Create Snowlake Warehouse
-2. Create S3 bucket
-3. Create Postgres DB 
-4. Add the variables to the dev.env file that will be persisted into the containers: 
-
-First create the file: 
-```sh
+2. Create an dev.env file that will be used to inject secrets as enviroment variables into your containers: 
+ou will then need to add the following variables to run the application in either ECS or locally: 
+```sh 
 touch dev.env
 ```
-You will then need to add the following variables to run the application in either ECS or locally: 
-
+Then copy the below variables into dev.env. We'll work through configuring each of these in the new few steps:
 ```sh
-#dev.env
-
 DAGSTER_PG_USERNAME=
 DAGSTER_PG_PASSWORD=
 DAGSTER_PG_DB=
@@ -56,8 +49,21 @@ SNOWFLAKE_WAREHOUSE=
 SNOWFLAKE_DATABASE=
 SNOWFLAKE_ROLE=
 ```
+3. [Create an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/) 
+4. Create an AWS User. 
+5. Create two S3 buckets. One bucket ```sh RAW_DATA_BUCKET``` is for storing raw data that is extracted from the NHL API. The other ```sh DBT_DOCS_BUCKET``` is for storing the files required to host the static dbt docs site. Once those buckets are created, make sure to update them in the dev.env file. 
+6. [Create a Snowflake account](https://signup.snowflake.com/)
+7. Create Snowlake resources:
+```sh
+--First create a warehouse
+CREATE WAREHOUSE NHL_ANALYTICS;
+USE WAREHOUSE NHL_ANALYTICS;
 
-
+--Next create the database
+CREATE DATABASE NHL_DB;
+USE DATABASE NHL_DB;
+```
+8. Create a postrgres DB. For this, I chose to use AWS RDS. You can create an RDS instance in the AWS console fairly quickly. Again, make sure to set all of the variables required in ```sh dev.env```
 
 
 ## Running Application in ECS
