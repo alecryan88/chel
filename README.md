@@ -19,6 +19,10 @@ The motivation for this project is primarily to gain experience using Dagster, d
 
 ## Setup
 There is some initial setup required regardless of the method of deployment: 
+1. Clone the repository to your local machine: 
+```sh
+git clone 
+```
 1. Create Snowlake Warehouse
 2. Create S3 bucket
 3. Create Postgres DB 
