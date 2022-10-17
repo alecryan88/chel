@@ -50,10 +50,10 @@ SNOWFLAKE_DATABASE=
 SNOWFLAKE_ROLE=
 ```
 3. [Create an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/) 
-4. Create an AWS User. 
-5. Create two S3 buckets. One bucket ```RAW_DATA_BUCKET``` is for storing raw data that is extracted from the NHL API. The other ```DBT_DOCS_BUCKET``` is for storing the files required to host the static dbt docs site. Once those buckets are created, make sure to update them in the dev.env file. 
+4. Create an AWS User and add the credentials to ```sh dev.env```. 
+5. Create two S3 buckets. One bucket ```RAW_DATA_BUCKET``` is for storing raw data that is extracted from the NHL API. The other ```DBT_DOCS_BUCKET``` is for storing the files required to host the static dbt docs site. Once those buckets are created, make sure to update them in ```dev.env```. 
 6. [Create a Snowflake account](https://signup.snowflake.com/)
-7. Create Snowlake resources:
+7. Create Snowlake resources. You can run the below SQL commands to create a warehouse and database in Snowlake. Add these to ```dev.env```: 
 ```sh
 --First create a warehouse
 CREATE WAREHOUSE NHL_ANALYTICS;
