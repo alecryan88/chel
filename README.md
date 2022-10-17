@@ -17,7 +17,7 @@ The motivation for this project is primarily to gain experience using Dagster, d
 ## Architecture
 #Diagram will go here
 
-## Setup
+## Prerequisites
 There is some initial setup required regardless of the method of deployment: 
 1. Clone the repository to your local machine: 
 ```sh
@@ -28,7 +28,7 @@ ou will then need to add the following variables to run the application in eithe
 ```sh 
 touch dev.env
 ```
-Then copy the below variables into dev.env. We'll work through configuring each of these in the new few steps:
+Then copy the below variables into ```dev.env```. We'll work through configuring each of these in the new few steps:
 ```sh
 DAGSTER_PG_USERNAME=
 DAGSTER_PG_PASSWORD=
@@ -50,7 +50,7 @@ SNOWFLAKE_DATABASE=
 SNOWFLAKE_ROLE=
 ```
 3. [Create an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/) 
-4. Create an AWS User and add the credentials to ```sh dev.env```. 
+4. Create an AWS User and add the credentials to ```dev.env```. 
 5. Create two S3 buckets. One bucket ```RAW_DATA_BUCKET``` is for storing raw data that is extracted from the NHL API. The other ```DBT_DOCS_BUCKET``` is for storing the files required to host the static dbt docs site. Once those buckets are created, make sure to update them in ```dev.env```. 
 6. [Create a Snowflake account](https://signup.snowflake.com/)
 7. Create Snowlake resources. You can run the below SQL commands to create a warehouse and database in Snowlake. Add these to ```dev.env```: 
@@ -68,22 +68,22 @@ USE DATABASE NHL_DB;
 
 ## Running Application in ECS
 
+### Setup 
+
 1. [Install Docker](https://docs.docker.com/cloud/ecs-integration/#prerequisites)
-2. [Create an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
-3. [Install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
-4. [Configure IAM permissions](https://docs.docker.com/cloud/ecs-integration/#requirements)
-5. [Create a Snowflake account](https://signup.snowflake.com/)
-6. [Create a Docker ECS context](https://docs.docker.com/cloud/ecs-integration/#create-aws-context):
+2. [Install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html)
+3. [Configure IAM permissions](https://docs.docker.com/cloud/ecs-integration/#requirements)
+4. [Create a Docker ECS context](https://docs.docker.com/cloud/ecs-integration/#create-aws-context):
   ```sh
 docker context create ecs nhl
   ```
-6. [Create ECR Repositories](https://docs.aws.amazon.com/cli/latest/reference/ecr/create-repository.html) for the images:
+5. [Create ECR Repositories](https://docs.aws.amazon.com/cli/latest/reference/ecr/create-repository.html) for the images:
   ```sh
   aws ecr create-repository --repository-name nhl/dagit
   aws ecr create-repository --repository-name nhl/daemon
   aws ecr create-repository --repository-name nhl/user_code
   ```
-7. [Log in to your ECR Registry](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html) (ensure that the $AWS_REGION environment variable is set to your registry's AWS region):
+6. [Log in to your ECR Registry](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html) (ensure that the $AWS_REGION environment variable is set to your registry's AWS region):
   ```sh
   export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --output text | cut -f1)
   export REGISTRY_URL=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
@@ -105,8 +105,7 @@ docker --context nhl compose --project-name nhl-dagster up
 ```
 
 ## Running Application Locally 
-1. [Install Docker](https://docs.docker.com/cloud/ecs-integration/#prerequisites)
-2. [Create a Snowflake account](https://signup.snowflake.com/)
+For the local implementation, assuming all resources are created and configured correctly in prequisites, you just need to [Install Docker](https://docs.docker.com/cloud/ecs-integration/#prerequisites)
 
 ### Build Images
 
